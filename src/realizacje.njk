@@ -1,85 +1,84 @@
-﻿---
+---
 layout: base.njk
 bodyClass: page-realizacje
 permalink: /realizacje/index.html
 ---
 {%- set d = strona_realizacje -%}
+{%- set cats = collections.projekty | map("data.kategoria") | unique | sort -%}
 
-<!-- ═══ PAGE HERO ═══ -->
-<section class="page-hero">
-  {% if d.hero.zdjecie %}
-  <div class="page-hero-bg">
-    <img src="{{ d.hero.zdjecie }}" alt="{{ d.hero.zdjecie_alt }}" loading="eager" />
-    <div class="page-hero-overlay"></div>
+<!-- ═══ INTRO ═══ -->
+<section class="section rl-intro">
+  <div class="ghost-num" aria-hidden="true">02</div>
+  <div class="rl-intro-inner">
+    <div class="section-label reveal"><span class="ri">02 / Realizacje</span></div>
+    <h1 class="rl-h1">
+      <div class="reveal"><span class="ri">Archiwum</span></div>
+      <div class="reveal reveal-delay-1"><span class="ri"><em>projektów.</em></span></div>
+    </h1>
+    <p class="rl-intro-sub fade-up">{{ d.podtytul }}</p>
   </div>
-  {% endif %}
-  <div class="container page-hero-content">
-    <div class="breadcrumb mono"><a href="/">Start</a> / <span aria-current="page">Realizacje</span></div>
-    <h1 class="page-h1">{{ d.h1 }}</h1>
-    <p class="page-sub">{{ d.podtytul }}</p>
+  <div class="rl-badge fade-up d2" aria-label="{{ collections.projekty | length }} realizacji w archiwum">
+    <span class="rl-badge-num mono">{{ collections.projekty | length }}</span>
+    <span class="rl-badge-label mono">realizacji<br>w archiwum</span>
   </div>
 </section>
 
-<!-- ═══ FILTRY KATEGORII ═══ -->
-{% if d.kategorie and d.kategorie.length %}
-<div class="filter-bar container" role="navigation" aria-label="Filtrowanie projektów">
-  <ul class="filter-list mono" role="list">
-    {% for kat in d.kategorie %}
-    <li>
-      <button class="filter-btn {% if loop.first %}is-active{% endif %}" data-filter="{{ kat | lower | replace(' ', '-') }}">
-        {{ kat }}
-      </button>
+<!-- ═══ ARCHIVE TABLE ═══ -->
+<section class="rl-archive" aria-label="Archiwum realizacji">
+
+  <!-- Filters -->
+  <div class="rl-filters" role="navigation" aria-label="Filtrowanie po kategorii">
+    <button class="rlf-btn is-active" data-f="">Wszystkie</button>
+    {% for cat in cats %}
+    <button class="rlf-btn" data-f="{{ cat }}">{{ cat }}</button>
+    {% endfor %}
+  </div>
+
+  <!-- Table head (desktop only) -->
+  <div class="rl-thead mono" aria-hidden="true">
+    <span class="rl-c-nr">Nr</span>
+    <span class="rl-c-rok">Rok</span>
+    <span class="rl-c-name">Projekt</span>
+    <span class="rl-c-city">Miasto</span>
+    <span class="rl-c-type">Rodzaj</span>
+  </div>
+
+  <!-- Rows -->
+  {% if collections.projekty and collections.projekty.length %}
+  <ul class="rl-list" id="rl-list">
+    {% for projekt in collections.projekty %}
+    <li class="rl-row{% if projekt.url %} rl-row--l{% endif %}"
+        data-cat="{{ projekt.data.kategoria }}">
+      <span class="rl-c-nr mono">{{ loop.index | padStart(2,'0') }}</span>
+      <span class="rl-c-rok mono">{{ projekt.data.rok }}</span>
+      <div class="rl-c-main">
+        {% if projekt.url %}
+          <a href="{{ projekt.url }}" class="rl-name">
+            {{- projekt.data.title -}}<span class="rl-arr" aria-hidden="true">→</span>
+          </a>
+        {% else %}
+          <span class="rl-name rl-name--plain">{{ projekt.data.title }}</span>
+        {% endif %}
+        {% if projekt.data.opis_krotki %}
+        <p class="rl-desc">{{ projekt.data.opis_krotki }}</p>
+        {% endif %}
+        <p class="rl-mobile-meta mono">{{ projekt.data.rok }} · {{ projekt.data.lokalizacja }} · {{ projekt.data.kategoria }}</p>
+      </div>
+      <span class="rl-c-city mono">{{ projekt.data.lokalizacja }}</span>
+      <span class="rl-c-type mono">{{ projekt.data.kategoria }}</span>
     </li>
     {% endfor %}
   </ul>
-</div>
-{% endif %}
+  {% else %}
+  <p class="rl-empty mono">Brak realizacji. Dodaj projekty w panelu CMS.</p>
+  {% endif %}
 
-<!-- ═══ SIATKA PROJEKTÓW ═══ -->
-{% if collections.projekty and collections.projekty.length %}
-<section class="section section--projects-grid">
-  <div class="container">
-    <div class="projects-masonry" id="projects-container">
-      {% for projekt in collections.projekty %}
-      <article
-        class="project-card project-card--grid"
-        data-category="{{ projekt.data.kategoria | lower | replace(' ', '-') }}"
-      >
-        <a href="{{ projekt.url }}" class="project-card-link">
-          <div class="project-card-img-wrap">
-            {% if projekt.data.zdjecie_glowne.plik %}
-            <img
-              src="{{ projekt.data.zdjecie_glowne.plik }}"
-              alt="{{ projekt.data.zdjecie_glowne.alt }}"
-              class="project-card-img"
-              loading="lazy"
-            />
-            {% else %}
-            <div class="project-card-img project-card-img--placeholder" aria-hidden="true">
-              <span class="placeholder-text mono">{{ projekt.data.title | truncate(30) }}</span>
-            </div>
-            {% endif %}
-            <div class="project-card-overlay"></div>
-          </div>
-          <div class="project-card-info">
-            <span class="project-cat mono">{{ projekt.data.kategoria }}</span>
-            <h2 class="project-title">{{ projekt.data.title }}</h2>
-            <div class="project-meta mono">
-              <span>{{ projekt.data.lokalizacja }}</span>
-              <span class="dot" aria-hidden="true">·</span>
-              <span>{{ projekt.data.rok }}</span>
-            </div>
-          </div>
-        </a>
-      </article>
-      {% endfor %}
+  <div class="rl-foot">
+    <span class="mono"><span id="rl-count">{{ collections.projekty | length }}</span> realizacji</span>
+    <div class="rl-legend mono">
+      <span class="rl-leg-link">Nazwa →</span><span>projekt z opisem</span>
+      <span class="rl-leg-plain">Nazwa</span><span>wzmianka w archiwum</span>
     </div>
   </div>
+
 </section>
-{% else %}
-<section class="section">
-  <div class="container">
-    <p class="text-muted mono">Brak realizacji do wyświetlenia. Dodaj projekty w panelu CMS.</p>
-  </div>
-</section>
-{% endif %}

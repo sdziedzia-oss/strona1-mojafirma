@@ -157,6 +157,27 @@ if(form && succ){
   });
 }
 
+/* ─── ARCHIVE FILTER ─────────────────────────────────────── */
+const rlfBtns = document.querySelectorAll('.rlf-btn');
+const rlRows  = document.querySelectorAll('.rl-row');
+const rlCount = document.getElementById('rl-count');
+if(rlfBtns.length){
+  rlfBtns.forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      rlfBtns.forEach(b=>b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      const f = btn.dataset.f;
+      let n = 0;
+      rlRows.forEach(row=>{
+        const show = !f || row.dataset.cat === f;
+        row.style.display = show ? '' : 'none';
+        if(show) n++;
+      });
+      if(rlCount) rlCount.textContent = n;
+    });
+  });
+}
+
 /* ─── SMOOTH ANCHORS ──────────────────────────────────────── */
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{

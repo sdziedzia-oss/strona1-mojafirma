@@ -252,6 +252,11 @@ collections:
       - { label: "Meta tytuł",  name: "meta_tytul", widget: "string", required: false }
       - { label: "Meta opis",   name: "meta_opis",  widget: "text",   required: false }
       - { label: "Wyróżniony na stronie głównej", name: "wyrozniony", widget: "boolean", default: false }
+      - label: "Generuj podstronę z pełnym opisem"
+        name: "ma_podstrone"
+        widget: "boolean"
+        default: true
+        hint: "Wyłącz, jeśli projekt ma być tylko wymieniony w archiwum (bez własnej strony)."
 
   # -------------------------------------------
   # 5. BLOG (przygotowany szablon na przyszłość)

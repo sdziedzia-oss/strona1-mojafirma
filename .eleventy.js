@@ -70,6 +70,23 @@ module.exports = function (eleventyConfig) {
     });
   });
 
+  // Filtr: map – wyciąga wartości po ścieżce klucza (np. "data.kategoria")
+  eleventyConfig.addFilter("map", (arr, key) => {
+    if (!Array.isArray(arr)) return [];
+    const keys = key.split(".");
+    return arr.map((item) => {
+      let val = item;
+      for (const k of keys) val = val != null ? val[k] : undefined;
+      return val;
+    });
+  });
+
+  // Filtr: unique – usuwa duplikaty
+  eleventyConfig.addFilter("unique", (arr) => {
+    if (!Array.isArray(arr)) return [];
+    return [...new Set(arr)].filter(Boolean);
+  });
+
   // Kolekcje
   eleventyConfig.addCollection("uslugi", function (collectionApi) {
     return collectionApi.getFilteredByGlob("src/uslugi/*.md");
@@ -77,6 +94,9 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addCollection("projekty", function (collectionApi) {
     return collectionApi.getFilteredByGlob("src/projekty/*.md").sort((a, b) => {
+      const rokA = parseInt(a.data.rok) || 0;
+      const rokB = parseInt(b.data.rok) || 0;
+      if (rokB !== rokA) return rokB - rokA;
       return (a.data.kolejnosc || 99) - (b.data.kolejnosc || 99);
     });
   });
