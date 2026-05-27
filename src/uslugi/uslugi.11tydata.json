@@ -1,0 +1,4 @@
+{
+  "layout": "layouts/usluga.njk",
+  "permalink": "/oferta/{{ page.fileSlug }}/index.html"
+}

@@ -1,0 +1,278 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/images/uploads"
+public_folder: "/assets/images/uploads"
+
+locale: pl
+
+# =============================================
+# KOLEKCJE CMS
+# =============================================
+collections:
+
+  # -------------------------------------------
+  # 1. USTAWIENIA GLOBALNE
+  # -------------------------------------------
+  - name: "ustawienia"
+    label: "⚙️ Ustawienia globalne"
+    files:
+      - name: "global"
+        label: "Dane firmy i witryny"
+        file: "src/_data/global.json"
+        fields:
+          - { label: "Nazwa firmy",          name: "nazwa_firmy",   widget: "string", hint: "Wyświetlana w logo i meta tagach" }
+          - { label: "Tagline / Hasło",       name: "tagline",       widget: "string", hint: "Krótkie hasło pod logiem" }
+          - { label: "Bazowy URL strony",     name: "base_url",      widget: "string", hint: "Np. https://twoja-firma.pl (bez / na końcu)" }
+          - label: "Logo"
+            name: "logo"
+            widget: "object"
+            fields:
+              - { label: "Plik logo (PNG/SVG)", name: "plik",   widget: "image" }
+              - { label: "Tekst alternatywny",  name: "alt",    widget: "string" }
+              - { label: "Wyświetlaj logo jako obraz (zamiast tekstu)", name: "uzyj_obrazu", widget: "boolean", default: false }
+          - label: "Dane kontaktowe"
+            name: "kontakt"
+            widget: "object"
+            fields:
+              - { label: "Adres",     name: "adres",   widget: "string" }
+              - { label: "Telefon",   name: "telefon", widget: "string" }
+              - { label: "E-mail",    name: "email",   widget: "string" }
+          - label: "Media społecznościowe"
+            name: "social"
+            widget: "object"
+            fields:
+              - { label: "LinkedIn URL",  name: "linkedin",  widget: "string", required: false }
+              - { label: "Instagram URL", name: "instagram", widget: "string", required: false }
+              - { label: "Facebook URL",  name: "facebook",  widget: "string", required: false }
+              - { label: "Behance URL",   name: "behance",   widget: "string", required: false }
+          - label: "Stopka – tekst"
+            name: "stopka"
+            widget: "object"
+            fields:
+              - { label: "Tekst w stopce (lewa kolumna)",  name: "opis",   widget: "text" }
+              - { label: "Tekst praw autorskich (© rok...)", name: "prawa", widget: "string" }
+          - label: "Schema.org – dane organizacji"
+            name: "schema"
+            widget: "object"
+            fields:
+              - { label: "Typ organizacji (np. ArchitectureFirm)", name: "typ", widget: "string", default: "ProfessionalService" }
+              - { label: "Opis firmy (1-2 zdania)",               name: "opis", widget: "text" }
+
+  # -------------------------------------------
+  # 2. STRONY GŁÓWNE (zawartość poszczególnych podstron)
+  # -------------------------------------------
+  - name: "strony"
+    label: "📄 Strony"
+    files:
+
+      - name: "home"
+        label: "Strona główna"
+        file: "src/_data/strona_home.json"
+        fields:
+          - { label: "Meta tytuł (ok. 60 znaków)",      name: "meta_tytul",  widget: "string" }
+          - { label: "Meta opis (150–160 znaków)",       name: "meta_opis",   widget: "text" }
+          - label: "Sekcja Hero (baner główny)"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Nagłówek H1 – linia 1",  name: "h1_linia1", widget: "string" }
+              - { label: "Nagłówek H1 – linia 2",  name: "h1_linia2", widget: "string" }
+              - { label: "Podtytuł / opis",         name: "podtytul",  widget: "text" }
+              - { label: "Tekst przycisku CTA",      name: "cta_tekst", widget: "string", default: "Zobacz realizacje" }
+              - { label: "Link przycisku CTA",       name: "cta_link",  widget: "string", default: "/realizacje" }
+              - { label: "Zdjęcie tła",              name: "zdjecie",   widget: "image",  required: false }
+              - { label: "Tekst alt zdjęcia",        name: "zdjecie_alt", widget: "string", required: false }
+          - label: "Sekcja – O nas (skrót)"
+            name: "o_nas_skrot"
+            widget: "object"
+            fields:
+              - { label: "Nagłówek sekcji",  name: "naglowek", widget: "string" }
+              - { label: "Tekst główny",     name: "tekst",    widget: "text" }
+              - { label: "Tekst przycisku",  name: "cta",      widget: "string", default: "Poznaj nas" }
+          - label: "Sekcja – Liczby / statystyki"
+            name: "statystyki"
+            widget: "list"
+            label_singular: "Statystyka"
+            fields:
+              - { label: "Liczba / Wartość (np. 25+)", name: "wartosc", widget: "string" }
+              - { label: "Opis",                        name: "opis",    widget: "string" }
+          - label: "Sekcja – Wyróżnione realizacje"
+            name: "realizacje_skrot"
+            widget: "object"
+            fields:
+              - { label: "Nagłówek sekcji", name: "naglowek", widget: "string" }
+              - { label: "Tekst przycisku", name: "cta",      widget: "string", default: "Wszystkie realizacje" }
+
+      - name: "o_nas"
+        label: "O nas"
+        file: "src/_data/strona_o_nas.json"
+        fields:
+          - { label: "Meta tytuł",  name: "meta_tytul", widget: "string" }
+          - { label: "Meta opis",   name: "meta_opis",  widget: "text" }
+          - { label: "Nagłówek H1", name: "h1",         widget: "string" }
+          - { label: "Podtytuł",    name: "podtytul",   widget: "text" }
+          - label: "Zdjęcie nagłówkowe"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Zdjęcie", name: "zdjecie",    widget: "image",  required: false }
+              - { label: "Alt",     name: "zdjecie_alt", widget: "string", required: false }
+          - label: "Sekcja – Nasza filozofia"
+            name: "filozofia"
+            widget: "object"
+            fields:
+              - { label: "Nagłówek", name: "naglowek", widget: "string" }
+              - { label: "Treść",    name: "tresc",    widget: "markdown" }
+          - label: "Sekcja – Wartości"
+            name: "wartosci"
+            widget: "list"
+            label_singular: "Wartość"
+            fields:
+              - { label: "Tytuł",   name: "tytul", widget: "string" }
+              - { label: "Opis",    name: "opis",  widget: "text" }
+          - label: "Sekcja – Zespół"
+            name: "zespol"
+            widget: "object"
+            fields:
+              - { label: "Nagłówek", name: "naglowek", widget: "string" }
+              - label: "Członkowie zespołu"
+                name: "czlonkowie"
+                widget: "list"
+                label_singular: "Osoba"
+                fields:
+                  - { label: "Imię i nazwisko", name: "imie",     widget: "string" }
+                  - { label: "Stanowisko",       name: "rola",     widget: "string" }
+                  - { label: "Zdjęcie",          name: "zdjecie",  widget: "image",  required: false }
+                  - { label: "Alt zdjęcia",      name: "alt",      widget: "string", required: false }
+                  - { label: "Bio (krótkie)",    name: "bio",      widget: "text",   required: false }
+
+      - name: "oferta"
+        label: "Oferta – strona główna"
+        file: "src/_data/strona_oferta.json"
+        fields:
+          - { label: "Meta tytuł",  name: "meta_tytul", widget: "string" }
+          - { label: "Meta opis",   name: "meta_opis",  widget: "text" }
+          - { label: "Nagłówek H1", name: "h1",         widget: "string" }
+          - { label: "Podtytuł",    name: "podtytul",   widget: "text" }
+          - label: "Zdjęcie nagłówkowe"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Zdjęcie", name: "zdjecie",     widget: "image",  required: false }
+              - { label: "Alt",     name: "zdjecie_alt", widget: "string", required: false }
+          - { label: "Tekst wprowadzający",   name: "wprowadzenie", widget: "text" }
+
+      - name: "realizacje"
+        label: "Realizacje – strona główna"
+        file: "src/_data/strona_realizacje.json"
+        fields:
+          - { label: "Meta tytuł",  name: "meta_tytul", widget: "string" }
+          - { label: "Meta opis",   name: "meta_opis",  widget: "text" }
+          - { label: "Nagłówek H1", name: "h1",         widget: "string" }
+          - { label: "Podtytuł",    name: "podtytul",   widget: "text" }
+          - label: "Zdjęcie nagłówkowe"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Zdjęcie", name: "zdjecie",     widget: "image",  required: false }
+              - { label: "Alt",     name: "zdjecie_alt", widget: "string", required: false }
+          - label: "Kategorie filtrowania"
+            name: "kategorie"
+            widget: "list"
+            field: { label: "Kategoria", name: "kategoria", widget: "string" }
+
+      - name: "kontakt"
+        label: "Kontakt"
+        file: "src/_data/strona_kontakt.json"
+        fields:
+          - { label: "Meta tytuł",         name: "meta_tytul",   widget: "string" }
+          - { label: "Meta opis",           name: "meta_opis",    widget: "text" }
+          - { label: "Nagłówek H1",         name: "h1",           widget: "string" }
+          - { label: "Podtytuł",            name: "podtytul",     widget: "text" }
+          - { label: "Tekst nad formularzem", name: "tekst_form", widget: "text" }
+          - { label: "Tekst po wysłaniu",   name: "sukces_tekst", widget: "text", default: "Dziękujemy! Odpowiemy wkrótce." }
+
+  # -------------------------------------------
+  # 3. USŁUGI (kolekcja wpisów)
+  # -------------------------------------------
+  - name: "uslugi"
+    label: "🏗️ Oferta – usługi"
+    folder: "src/uslugi"
+    create: true
+    slug: "{{slug}}"
+    label_singular: "Usługa"
+    fields:
+      - { label: "Tytuł usługi",       name: "title",       widget: "string" }
+      - { label: "Kolejność (1, 2…)", name: "kolejnosc",   widget: "number", default: 99 }
+      - { label: "Krótki opis",        name: "opis_krotki", widget: "text" }
+      - { label: "Ikona (emoji lub kod)", name: "ikona",   widget: "string", required: false, hint: "Np. 🏛️ lub pozostaw puste" }
+      - label: "Zdjęcie główne"
+        name: "zdjecie"
+        widget: "object"
+        fields:
+          - { label: "Plik zdjęcia",      name: "plik", widget: "image",  required: false }
+          - { label: "Tekst alternatywny", name: "alt",  widget: "string", required: false }
+      - { label: "Treść (pełny opis usługi)", name: "body", widget: "markdown" }
+      - { label: "Meta tytuł",  name: "meta_tytul", widget: "string", required: false }
+      - { label: "Meta opis",   name: "meta_opis",  widget: "text",   required: false }
+
+  # -------------------------------------------
+  # 4. REALIZACJE / PORTFOLIO
+  # -------------------------------------------
+  - name: "projekty"
+    label: "🏛️ Realizacje – portfolio"
+    folder: "src/projekty"
+    create: true
+    slug: "{{slug}}"
+    label_singular: "Realizacja"
+    fields:
+      - { label: "Tytuł projektu",       name: "title",      widget: "string" }
+      - { label: "Kolejność",            name: "kolejnosc",  widget: "number", default: 99 }
+      - { label: "Kategoria",            name: "kategoria",  widget: "string", hint: "Np. Biblioteki, Centra kultury, Obiekty sportowe" }
+      - { label: "Rok realizacji",       name: "rok",        widget: "string" }
+      - { label: "Lokalizacja",          name: "lokalizacja", widget: "string" }
+      - { label: "Krótki opis",          name: "opis_krotki", widget: "text" }
+      - label: "Zdjęcie główne (miniatura)"
+        name: "zdjecie_glowne"
+        widget: "object"
+        fields:
+          - { label: "Plik zdjęcia",      name: "plik", widget: "image" }
+          - { label: "Tekst alternatywny", name: "alt",  widget: "string" }
+      - label: "Galeria zdjęć"
+        name: "galeria"
+        widget: "list"
+        required: false
+        label_singular: "Zdjęcie"
+        fields:
+          - { label: "Plik zdjęcia",      name: "plik", widget: "image" }
+          - { label: "Tekst alternatywny", name: "alt",  widget: "string" }
+      - { label: "Treść (opis projektu)", name: "body", widget: "markdown" }
+      - { label: "Meta tytuł",  name: "meta_tytul", widget: "string", required: false }
+      - { label: "Meta opis",   name: "meta_opis",  widget: "text",   required: false }
+      - { label: "Wyróżniony na stronie głównej", name: "wyrozniony", widget: "boolean", default: false }
+
+  # -------------------------------------------
+  # 5. BLOG (przygotowany szablon na przyszłość)
+  # -------------------------------------------
+  - name: "blog"
+    label: "📝 Blog (przyszłość)"
+    folder: "src/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    label_singular: "Wpis"
+    fields:
+      - { label: "Tytuł",        name: "title",     widget: "string" }
+      - { label: "Data",         name: "data",      widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Szkic (nie publikuj)", name: "draft", widget: "boolean", default: true }
+      - { label: "Krótki opis",  name: "opis",      widget: "text" }
+      - label: "Zdjęcie wyróżniające"
+        name: "zdjecie"
+        widget: "object"
+        fields:
+          - { label: "Plik",  name: "plik", widget: "image",  required: false }
+          - { label: "Alt",   name: "alt",  widget: "string", required: false }
+      - { label: "Treść wpisu", name: "body", widget: "markdown" }
+      - { label: "Meta tytuł",  name: "meta_tytul", widget: "string", required: false }
+      - { label: "Meta opis",   name: "meta_opis",  widget: "text",   required: false }

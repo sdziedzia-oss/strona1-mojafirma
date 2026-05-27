@@ -1,0 +1,87 @@
+{#-- Wybierz źródło danych dla tej strony --#}
+{%- if page.url == "/" or page.url == "/index.html" -%}
+  {%- set _pd = strona_home -%}
+{%- elif '/o-nas' in page.url -%}
+  {%- set _pd = strona_o_nas -%}
+{%- elif '/oferta' in page.url and not '/oferta/' in page.url -%}
+  {%- set _pd = strona_oferta -%}
+{%- elif '/realizacje' in page.url and not '/realizacje/' in page.url -%}
+  {%- set _pd = strona_realizacje -%}
+{%- elif '/kontakt' in page.url -%}
+  {%- set _pd = strona_kontakt -%}
+{%- else -%}
+  {%- set _pd = null -%}
+{%- endif -%}
+
+{#-- Meta tytuł: frontmatter > strona JSON > fallback --#}
+{%- set _metaTytul = meta_tytul if meta_tytul else (_pd.meta_tytul if _pd and _pd.meta_tytul) -%}
+{%- set _metaTytul = _metaTytul if _metaTytul else (title + " – " + global.nazwa_firmy if title else global.nazwa_firmy) -%}
+
+{#-- Meta opis: frontmatter > strona JSON > fallback --#}
+{%- set _metaOpis = meta_opis if meta_opis else (_pd.meta_opis if _pd and _pd.meta_opis) -%}
+{%- set _metaOpis = _metaOpis if _metaOpis else global.schema.opis -%}
+
+{%- set _pageUrl = global.base_url + (page.url | replace("/index.html", "/")) -%}
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{{ _metaTytul }}</title>
+<meta name="description" content="{{ _metaOpis }}" />
+<link rel="canonical" href="{{ _pageUrl }}" />
+
+<!-- Open Graph -->
+<meta property="og:title"       content="{{ _metaTytul }}" />
+<meta property="og:description" content="{{ _metaOpis }}" />
+<meta property="og:url"         content="{{ _pageUrl }}" />
+<meta property="og:type"        content="website" />
+<meta property="og:site_name"   content="{{ global.nazwa_firmy }}" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+
+<!-- Fonts: Cormorant Garamond + DM Mono + Outfit -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<!-- Główny arkusz stylów -->
+<link rel="stylesheet" href="/assets/css/style.css" />
+
+<!-- Schema.org -->
+{% if page.url == "/" or page.url == "/index.html" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "{{ global.schema.typ }}",
+  "name": "{{ global.nazwa_firmy }}",
+  "url": "{{ global.base_url }}",
+  "description": "{{ global.schema.opis }}",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "{{ global.kontakt.adres }}"
+  },
+  "telephone": "{{ global.kontakt.telefon }}",
+  "email": "{{ global.kontakt.email }}"{% if global.social.linkedin %},
+  "sameAs": [
+    "{{ global.social.linkedin }}"{% if global.social.instagram %},
+    "{{ global.social.instagram }}"{% endif %}{% if global.social.facebook %},
+    "{{ global.social.facebook }}"{% endif %}
+  ]{% endif %}
+}
+</script>
+{% else %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "{{ _metaTytul }}",
+  "description": "{{ _metaOpis }}",
+  "url": "{{ _pageUrl }}",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "{{ global.nazwa_firmy }}",
+    "url": "{{ global.base_url }}"
+  }
+}
+</script>
+{% endif %}

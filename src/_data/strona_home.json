@@ -1,0 +1,28 @@
+{
+  "meta_tytul": "FORMA | Architektura – Projektowanie Obiektów Użyteczności Publicznej",
+  "meta_opis": "Pracownia architektoniczna specjalizująca się w projektowaniu budynków użyteczności publicznej. Biblioteki, centra kultury, obiekty sportowe najwyższej klasy.",
+  "hero": {
+    "h1_linia1": "Architektura",
+    "h1_linia2": "jako zapis czasu.",
+    "podtytul": "Projektujemy przestrzenie publiczne, które definiują charakter miast i służą pokoleniom.",
+    "cta_tekst": "Zobacz realizacje",
+    "cta_link": "/realizacje",
+    "zdjecie": "",
+    "zdjecie_alt": ""
+  },
+  "o_nas_skrot": {
+    "naglowek": "Między precyzją a wizją",
+    "tekst": "Łączymy rygorystyczne myślenie inżynierskie z głęboko zakorzenioną wrażliwością na przestrzeń. Każdy projekt to odpowiedź na konkretne miejsce, czas i potrzeby społeczności.",
+    "cta": "Poznaj nas"
+  },
+  "statystyki": [
+    { "wartosc": "25+", "opis": "lat doświadczenia" },
+    { "wartosc": "180", "opis": "zrealizowanych projektów" },
+    { "wartosc": "12", "opis": "nagród krajowych i międzynarodowych" },
+    { "wartosc": "8", "opis": "miast w Polsce" }
+  ],
+  "realizacje_skrot": {
+    "naglowek": "Wybrane realizacje",
+    "cta": "Wszystkie realizacje"
+  }
+}

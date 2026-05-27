@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "mcp__Claude_Preview__preview_start",
+      "mcp__Claude_in_Chrome__list_connected_browsers",
+      "WebFetch(domain:saisei-sbj.webflow.io)",
+      "Bash(where node *)",
+      "Read(//c/Program Files/**)",
+      "Read(//c/Users/sdzie/AppData/Roaming/**)",
+      "Read(//c/Users/sdzie/**)",
+      "PowerShell(Get-Command node -ErrorAction SilentlyContinue)",
+      "PowerShell(Get-Command npm -ErrorAction SilentlyContinue)"
+    ]
+  }
+}

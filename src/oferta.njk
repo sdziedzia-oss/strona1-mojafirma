@@ -1,0 +1,80 @@
+---
+layout: layouts/base.njk
+bodyClass: page-oferta
+permalink: /oferta/index.html
+---
+{%- set d = strona_oferta -%}
+
+<!-- ═══ PAGE HERO ═══ -->
+<section class="page-hero">
+  {% if d.hero.zdjecie %}
+  <div class="page-hero-bg">
+    <img src="{{ d.hero.zdjecie }}" alt="{{ d.hero.zdjecie_alt }}" loading="eager" />
+    <div class="page-hero-overlay"></div>
+  </div>
+  {% endif %}
+  <div class="container page-hero-content">
+    <div class="breadcrumb mono"><a href="/">Start</a> / <span aria-current="page">Oferta</span></div>
+    <h1 class="page-h1">{{ d.h1 }}</h1>
+    <p class="page-sub">{{ d.podtytul }}</p>
+  </div>
+</section>
+
+<!-- ═══ WPROWADZENIE ═══ -->
+<section class="section section--intro">
+  <div class="container">
+    <div class="section-grid section-grid--intro">
+      <div class="section-label-col">
+        <span class="section-num mono">01</span>
+        <div class="section-vert-line"></div>
+      </div>
+      <div class="section-content-col">
+        <p class="section-lead">{{ d.wprowadzenie }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ LISTA USŁUG ═══ -->
+{% if collections.uslugi and collections.uslugi.length %}
+<section class="section section--services-full">
+  <div class="container">
+    <ul class="services-full-list" role="list">
+      {% for usluga in collections.uslugi | sortByKey("kolejnosc") %}
+      <li class="service-full-item">
+        <article class="service-full-card">
+          <div class="service-full-header">
+            <span class="service-full-num mono">{{ usluga.data.ikona or loop.index }}</span>
+            <div class="service-full-title-wrap">
+              <h2 class="service-full-title">{{ usluga.data.title }}</h2>
+              <p class="service-full-lead">{{ usluga.data.opis_krotki }}</p>
+            </div>
+            {% if usluga.data.zdjecie and usluga.data.zdjecie.plik %}
+            <div class="service-full-img-wrap">
+              <img src="{{ usluga.data.zdjecie.plik }}" alt="{{ usluga.data.zdjecie.alt }}" loading="lazy" />
+            </div>
+            {% endif %}
+          </div>
+          <a href="{{ usluga.url }}" class="service-full-more link-arrow">Więcej <span aria-hidden="true">→</span></a>
+        </article>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endif %}
+
+<!-- ═══ CTA ═══ -->
+<section class="section section--cta-block">
+  <div class="container">
+    <div class="cta-block">
+      <div class="cta-block-text">
+        <h2 class="cta-block-h2">Gotowy na współpracę?</h2>
+        <p>Opowiedz nam o projekcie. Bezpłatna konsultacja wstępna.</p>
+      </div>
+      <div class="cta-block-action">
+        <a href="/kontakt" class="btn btn--primary btn--large">Napisz do nas</a>
+      </div>
+    </div>
+  </div>
+</section>
