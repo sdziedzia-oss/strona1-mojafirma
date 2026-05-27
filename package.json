@@ -1,0 +1,14 @@
+{
+  "name": "strona-firmowa",
+  "version": "1.0.0",
+  "description": "Strona firmowa - SSG z Eleventy + Decap CMS",
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve --port=8080",
+    "watch": "eleventy --watch"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "luxon": "^3.4.4"
+  }
+}

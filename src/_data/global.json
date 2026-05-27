@@ -1,0 +1,29 @@
+{
+  "nazwa_firmy": "FORMA | Architektura",
+  "tagline": "Przestrzenie, które trwają.",
+  "base_url": "https://forma-architektura.pl",
+  "logo": {
+    "plik": "",
+    "alt": "FORMA Architektura – logo",
+    "uzyj_obrazu": false
+  },
+  "kontakt": {
+    "adres": "ul. Marszałkowska 10, 00-590 Warszawa",
+    "telefon": "+48 22 123 45 67",
+    "email": "biuro@forma-architektura.pl"
+  },
+  "social": {
+    "linkedin": "https://linkedin.com/company/forma-architektura",
+    "instagram": "https://instagram.com/forma.architektura",
+    "facebook": "",
+    "behance": ""
+  },
+  "stopka": {
+    "opis": "Projektujemy budynki użyteczności publicznej, które łączą precyzję techniczną z trwałą wartością architektoniczną.",
+    "prawa": "© 2025 FORMA | Architektura. Wszelkie prawa zastrzeżone."
+  },
+  "schema": {
+    "typ": "ProfessionalService",
+    "opis": "Pracownia architektoniczna specjalizująca się w projektowaniu obiektów użyteczności publicznej o najwyższym standardzie wykonania."
+  }
+}

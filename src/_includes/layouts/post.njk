@@ -1,0 +1,28 @@
+---
+layout: layouts/base.njk
+bodyClass: page-post
+---
+
+<section class="page-hero page-hero--short">
+  {% if zdjecie and zdjecie.plik %}
+  <div class="page-hero-bg">
+    <img src="{{ zdjecie.plik }}" alt="{{ zdjecie.alt }}" loading="eager" />
+    <div class="page-hero-overlay"></div>
+  </div>
+  {% endif %}
+  <div class="container page-hero-content">
+    <div class="breadcrumb mono"><a href="/">Start</a> / Blog / <span aria-current="page">{{ title }}</span></div>
+    <time class="post-date mono" datetime="{{ data | dateISO }}">{{ data | dateFormat }}</time>
+    <h1 class="page-h1">{{ title }}</h1>
+  </div>
+</section>
+
+<section class="section section--post-body">
+  <div class="container">
+    <div class="prose-wrap prose-wrap--narrow">
+      <div class="prose">
+        {{ content | safe }}
+      </div>
+    </div>
+  </div>
+</section>

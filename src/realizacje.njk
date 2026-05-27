@@ -1,0 +1,85 @@
+---
+layout: layouts/base.njk
+bodyClass: page-realizacje
+permalink: /realizacje/index.html
+---
+{%- set d = strona_realizacje -%}
+
+<!-- ═══ PAGE HERO ═══ -->
+<section class="page-hero">
+  {% if d.hero.zdjecie %}
+  <div class="page-hero-bg">
+    <img src="{{ d.hero.zdjecie }}" alt="{{ d.hero.zdjecie_alt }}" loading="eager" />
+    <div class="page-hero-overlay"></div>
+  </div>
+  {% endif %}
+  <div class="container page-hero-content">
+    <div class="breadcrumb mono"><a href="/">Start</a> / <span aria-current="page">Realizacje</span></div>
+    <h1 class="page-h1">{{ d.h1 }}</h1>
+    <p class="page-sub">{{ d.podtytul }}</p>
+  </div>
+</section>
+
+<!-- ═══ FILTRY KATEGORII ═══ -->
+{% if d.kategorie and d.kategorie.length %}
+<div class="filter-bar container" role="navigation" aria-label="Filtrowanie projektów">
+  <ul class="filter-list mono" role="list">
+    {% for kat in d.kategorie %}
+    <li>
+      <button class="filter-btn {% if loop.first %}is-active{% endif %}" data-filter="{{ kat | lower | replace(' ', '-') }}">
+        {{ kat }}
+      </button>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+<!-- ═══ SIATKA PROJEKTÓW ═══ -->
+{% if collections.projekty and collections.projekty.length %}
+<section class="section section--projects-grid">
+  <div class="container">
+    <div class="projects-masonry" id="projects-container">
+      {% for projekt in collections.projekty %}
+      <article
+        class="project-card project-card--grid"
+        data-category="{{ projekt.data.kategoria | lower | replace(' ', '-') }}"
+      >
+        <a href="{{ projekt.url }}" class="project-card-link">
+          <div class="project-card-img-wrap">
+            {% if projekt.data.zdjecie_glowne.plik %}
+            <img
+              src="{{ projekt.data.zdjecie_glowne.plik }}"
+              alt="{{ projekt.data.zdjecie_glowne.alt }}"
+              class="project-card-img"
+              loading="lazy"
+            />
+            {% else %}
+            <div class="project-card-img project-card-img--placeholder" aria-hidden="true">
+              <span class="placeholder-text mono">{{ projekt.data.title | truncate(30) }}</span>
+            </div>
+            {% endif %}
+            <div class="project-card-overlay"></div>
+          </div>
+          <div class="project-card-info">
+            <span class="project-cat mono">{{ projekt.data.kategoria }}</span>
+            <h2 class="project-title">{{ projekt.data.title }}</h2>
+            <div class="project-meta mono">
+              <span>{{ projekt.data.lokalizacja }}</span>
+              <span class="dot" aria-hidden="true">·</span>
+              <span>{{ projekt.data.rok }}</span>
+            </div>
+          </div>
+        </a>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% else %}
+<section class="section">
+  <div class="container">
+    <p class="text-muted mono">Brak realizacji do wyświetlenia. Dodaj projekty w panelu CMS.</p>
+  </div>
+</section>
+{% endif %}

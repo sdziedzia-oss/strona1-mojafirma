@@ -1,0 +1,58 @@
+{
+  "meta_tytul": "O nas – FORMA | Architektura",
+  "meta_opis": "Poznaj naszą pracownię architektoniczną. Ponad 25 lat doświadczenia w projektowaniu obiektów użyteczności publicznej najwyższej klasy.",
+  "h1": "Architektura jako odpowiedzialność.",
+  "podtytul": "Tworzymy budynki, które przetrwają próbę czasu – technicznie precyzyjne i estetycznie ponadczasowe.",
+  "hero": {
+    "zdjecie": "",
+    "zdjecie_alt": "Zespół pracowni FORMA podczas przeglądu projektu"
+  },
+  "filozofia": {
+    "naglowek": "Nasza filozofia",
+    "tresc": "Wierzymy, że architektura użyteczności publicznej jest jednym z najważniejszych aktów zbiorowej odpowiedzialności. Budynek biblioteki, centrum kultury czy hali sportowej nie jest wyłącznie funkcjonalnym obiektem – to zaproszenie do wspólnoty.\n\nNasza metoda projektowania opiera się na trzech zasadach: **uważnym słuchaniu** miejsca i jego historii, **technicznej rzetelności** w każdym szczególe oraz **długotrwałości** rozwiązań, które nie ulegają modom.\n\nProjektujemy tak, jakby każdy budynek miał przetrwać sto lat."
+  },
+  "wartosci": [
+    {
+      "tytul": "Trwałość",
+      "opis": "Każde nasze rozwiązanie jest testowane pod kątem długowieczności – zarówno materialnej, jak i estetycznej."
+    },
+    {
+      "tytul": "Kontekst",
+      "opis": "Budynek musi rozmawiać z miejscem. Analizujemy historię, tkankę miejską i potrzeby społeczności przed pierwszym szkicem."
+    },
+    {
+      "tytul": "Precyzja",
+      "opis": "Od koncepcji do wykonawstwa – pracujemy ze szczegółami, które składają się na wyjątkowe całości."
+    },
+    {
+      "tytul": "Funkcjonalność",
+      "opis": "Piękno formy nigdy nie odbywa się kosztem użytkownika. Przestrzeń musi działać."
+    }
+  ],
+  "zespol": {
+    "naglowek": "Zespół",
+    "czlonkowie": [
+      {
+        "imie": "Anna Kowalska",
+        "rola": "Główny Architekt / Partner",
+        "zdjecie": "",
+        "alt": "Anna Kowalska – główny architekt",
+        "bio": "Absolwentka Politechniki Warszawskiej i ETH Zürich. Specjalizuje się w obiektach kultury i bibliotekach."
+      },
+      {
+        "imie": "Marek Wiśniewski",
+        "rola": "Architekt Prowadzący / Partner",
+        "zdjecie": "",
+        "alt": "Marek Wiśniewski – architekt prowadzący",
+        "bio": "Doktor nauk technicznych, wykładowca akademicki. Ekspert w zakresie akustyki i systemów konstrukcyjnych."
+      },
+      {
+        "imie": "Joanna Nowak",
+        "rola": "Kierownik Projektów",
+        "zdjecie": "",
+        "alt": "Joanna Nowak – kierownik projektów",
+        "bio": "15 lat doświadczenia w koordynacji dużych projektów infrastrukturalnych i budowlanych."
+      }
+    ]
+  }
+}

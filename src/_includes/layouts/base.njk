@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  {% include "head.njk" %}
+</head>
+<body class="{{ bodyClass }}">
+
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+
+  <!-- Preloader (kontrolowany przez JS – sessionStorage) -->
+  <div id="preloader" role="status" aria-label="Ładowanie">
+    <div class="pl-half pl-top">
+      <div class="pl-center">
+        <div class="pl-logo">{{ global.nazwa_firmy | upper }}</div>
+        <div class="pl-progress">
+          <div class="pl-bar"><div class="pl-fill" id="pl-fill"></div></div>
+          <div class="pl-num" id="pl-num">000</div>
+        </div>
+      </div>
+    </div>
+    <div class="pl-half pl-bottom"></div>
+  </div>
+
+  {% include "header.njk" %}
+
+  <main id="main-content">
+    {{ content | safe }}
+  </main>
+
+  {% include "footer.njk" %}
+
+  <script src="/assets/js/main.js" defer></script>
+</body>
+</html>

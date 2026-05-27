@@ -1,0 +1,156 @@
+---
+layout: layouts/base.njk
+bodyClass: page-home
+permalink: /index.html
+---
+{%- set d = strona_home -%}
+
+<!-- ═══ HERO ═══ -->
+<section id="hero" class="hero" aria-label="Główny baner">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="hero-noise" aria-hidden="true"></div>
+  <div class="hero-grad" aria-hidden="true"></div>
+
+  {% if d.hero.zdjecie %}
+  <img src="{{ d.hero.zdjecie }}" alt="{{ d.hero.zdjecie_alt }}" class="hero-bg-img" loading="eager" />
+  <div class="hero-bg-overlay" aria-hidden="true"></div>
+  {% endif %}
+
+
+  <div class="hero-coord" aria-hidden="true">52.2297° N<br>21.0122° E<br><span style="opacity:.4">WARSZAWA, PL</span></div>
+
+  <div class="hero-text">
+    <div class="hero-tag">
+      <span class="tag-line" aria-hidden="true"></span>
+      <span class="hero-tag-inner">{{ global.tagline }}</span>
+    </div>
+    <h1 class="hero-h1">
+      <span class="h1-line h1-l1"><span class="h1-inner">{{ d.hero.h1_linia1 }}</span></span>
+      <span class="h1-line h1-l2"><span class="h1-inner">{{ d.hero.h1_linia2 }}</span></span>
+    </h1>
+    <div class="hero-sub-row">
+      <p class="hero-sub"><span class="hero-sub-inner">{{ d.hero.podtytul }}</span></p>
+      <div class="hero-cta">
+        <div class="hero-cta-inner">
+          <a href="{{ d.hero.cta_link }}" class="btn btn--primary">{{ d.hero.cta_tekst }}</a>
+          <a href="/o-nas" class="btn btn--ghost">O pracowni</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll" aria-hidden="true">
+    <div class="scroll-arrow"></div>
+    <span>Przewiń</span>
+  </div>
+</section>
+
+<!-- ═══ MARQUEE ═══ -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">Biblioteki <span class="marquee-sep">·</span></span>
+    <span class="marquee-item">Centra kultury <span class="marquee-sep">·</span></span>
+    <span class="marquee-item">Obiekty sportowe <span class="marquee-sep">·</span></span>
+    <span class="marquee-item">Terminale <span class="marquee-sep">·</span></span>
+    <span class="marquee-item">Infrastruktura publiczna <span class="marquee-sep">·</span></span>
+    <span class="marquee-item">Projektowanie architektoniczne <span class="marquee-sep">·</span></span>
+    <span class="marquee-item">BIM &amp; Technologia <span class="marquee-sep">·</span></span>
+    <!-- powtórzenie dla płynnej pętli -->
+    <span class="marquee-item">Biblioteki <span class="marquee-sep">·</span></span>
+    <span class="marquee-item">Centra kultury <span class="marquee-sep">·</span></span>
+    <span class="marquee-item">Obiekty sportowe <span class="marquee-sep">·</span></span>
+    <span class="marquee-item">Terminale <span class="marquee-sep">·</span></span>
+    <span class="marquee-item">Infrastruktura publiczna <span class="marquee-sep">·</span></span>
+    <span class="marquee-item">Projektowanie architektoniczne <span class="marquee-sep">·</span></span>
+    <span class="marquee-item">BIM &amp; Technologia <span class="marquee-sep">·</span></span>
+  </div>
+</div>
+
+<!-- ═══ 01 · O NAS SKRÓT ═══ -->
+<section id="about" class="section">
+  <div class="ghost-num" aria-hidden="true">01</div>
+  <div class="about-inner">
+    <div class="about-left">
+      <div class="section-label reveal"><span class="ri">01 / O pracowni</span></div>
+      <blockquote class="about-quote">
+        <div class="reveal"><span class="ri">{{ d.o_nas_skrot.naglowek }}</span></div>
+      </blockquote>
+      <a href="/o-nas" class="link-arrow reveal reveal-delay-2"><span class="ri">{{ d.o_nas_skrot.cta }} →</span></a>
+    </div>
+    <div class="about-right">
+      <p class="prose-text fade-up">{{ d.o_nas_skrot.tekst }}</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STATYSTYKI ═══ -->
+{% if d.statystyki and d.statystyki.length %}
+<section class="section section--bg2" style="padding-block:0" aria-label="Liczby i fakty">
+  <div class="stats-row">
+    {% for s in d.statystyki %}
+    <div class="stat-cell fade-up{% if loop.index > 1 %} d{{ loop.index - 1 }}{% endif %}">
+      <span class="stat-v" data-count="{{ s.wartosc | replace('+','') }}"{% if '+' in s.wartosc %} data-suffix="+"{% endif %}>0</span>
+      <span class="stat-l">{{ s.opis }}</span>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<!-- ═══ 02 · WYRÓŻNIONE REALIZACJE ═══ -->
+{%- set wyroznione = collections.projekty | selectattr("data.wyrozniony") -%}
+{% if wyroznione.length %}
+<section id="projects" class="section">
+  <div class="ghost-num" aria-hidden="true">02</div>
+  <div class="proj-header">
+    <div>
+      <div class="section-label reveal"><span class="ri">02 / Wybrane realizacje</span></div>
+      <h2 class="proj-title">
+        <div class="reveal"><span class="ri">{{ d.realizacje_skrot.naglowek }}</span></div>
+      </h2>
+    </div>
+    <div class="proj-nav">
+      <button class="proj-btn" id="proj-prev" aria-label="Poprzedni projekt">←</button>
+      <button class="proj-btn" id="proj-next" aria-label="Następny projekt">→</button>
+    </div>
+  </div>
+
+  <div class="proj-gallery" id="proj-gallery">
+    {% for projekt in wyroznione %}
+    <div class="proj-slide">
+      {% if projekt.data.zdjecie_glowne.plik %}
+      <img src="{{ projekt.data.zdjecie_glowne.plik }}" alt="{{ projekt.data.zdjecie_glowne.alt }}" class="proj-slide-img" loading="lazy" />
+      {% else %}
+      <div class="proj-slide-ph" aria-hidden="true"></div>
+      {% endif %}
+      <div class="proj-overlay" aria-hidden="true"></div>
+      <div class="proj-info">
+        <span class="proj-cat">{{ projekt.data.kategoria }}</span>
+        <a href="{{ projekt.url }}" class="proj-name">{{ projekt.data.title }}</a>
+        <div class="proj-meta">{{ projekt.data.lokalizacja }} · {{ projekt.data.rok }}</div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="proj-gallery-after">
+    <a href="/realizacje" class="link-arrow">{{ d.realizacje_skrot.cta }} →</a>
+  </div>
+</section>
+{% endif %}
+
+<!-- ═══ 03 · CTA KONTAKT ═══ -->
+<section class="section--cta" id="kontakt-cta">
+  <div class="cta-grid-bg" aria-hidden="true"></div>
+  <div class="cta-inner">
+    <span class="cta-label reveal"><span class="ri">03 / Kontakt</span></span>
+    <div class="cta-heading">
+      <div class="reveal"><span class="ri">Masz projekt?</span></div>
+      <div class="reveal reveal-delay-2"><span class="ri"><em>Porozmawiajmy.</em></span></div>
+    </div>
+    <div class="cta-actions fade-up d3">
+      <a href="/kontakt" class="btn btn--primary btn--large">Napisz do nas</a>
+      <a href="mailto:{{ global.kontakt.email }}" class="btn btn--ghost btn--large">{{ global.kontakt.email }}</a>
+    </div>
+  </div>
+</section>

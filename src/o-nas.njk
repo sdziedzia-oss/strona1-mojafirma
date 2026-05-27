@@ -1,0 +1,111 @@
+---
+layout: layouts/base.njk
+bodyClass: page-o-nas
+permalink: /o-nas/index.html
+---
+{%- set d = strona_o_nas -%}
+
+<!-- ═══ PAGE HERO ═══ -->
+<section class="page-hero">
+  {% if d.hero.zdjecie %}
+  <div class="page-hero-bg">
+    <img src="{{ d.hero.zdjecie }}" alt="{{ d.hero.zdjecie_alt }}" loading="eager" />
+    <div class="page-hero-overlay"></div>
+  </div>
+  {% endif %}
+  <div class="container page-hero-content">
+    <div class="breadcrumb mono" aria-label="Ścieżka nawigacji">
+      <a href="/">Start</a> <span aria-hidden="true">/</span> <span aria-current="page">O nas</span>
+    </div>
+    <h1 class="page-h1">{{ d.h1 }}</h1>
+    <p class="page-sub">{{ d.podtytul }}</p>
+  </div>
+</section>
+
+<!-- ═══ FILOZOFIA ═══ -->
+<section class="section section--philosophy">
+  <div class="container">
+    <div class="section-grid section-grid--asymm">
+      <div class="section-label-col">
+        <span class="section-num mono">01</span>
+        <div class="section-vert-line"></div>
+      </div>
+      <div class="section-content-col">
+        <h2 class="section-h2">{{ d.filozofia.naglowek }}</h2>
+        <div class="prose">
+          {{ d.filozofia.tresc | safe }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WARTOŚCI ═══ -->
+{% if d.wartosci and d.wartosci.length %}
+<section class="section section--values">
+  <div class="container">
+    <div class="section-label-row">
+      <span class="section-num mono">02</span>
+      <h2 class="section-h2">Nasze wartości</h2>
+    </div>
+    <ul class="values-grid" role="list">
+      {% for w in d.wartosci %}
+      <li class="value-card">
+        <span class="value-num mono">{{ loop.index | padStart(2, '0') }}</span>
+        <h3 class="value-title">{{ w.tytul }}</h3>
+        <p class="value-desc">{{ w.opis }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endif %}
+
+<!-- ═══ STATYSTYKI (z danych głównej) ═══ -->
+{%- set sd = strona_home -%}
+{% if sd.statystyki and sd.statystyki.length %}
+<section class="section section--stats section--stats-dark">
+  <div class="container">
+    <ul class="stats-grid" role="list">
+      {% for s in sd.statystyki %}
+      <li class="stat-item">
+        <span class="stat-value">{{ s.wartosc }}</span>
+        <span class="stat-label mono">{{ s.opis }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endif %}
+
+<!-- ═══ ZESPÓŁ ═══ -->
+{% if d.zespol and d.zespol.czlonkowie and d.zespol.czlonkowie.length %}
+<section class="section section--team">
+  <div class="container">
+    <div class="section-label-row">
+      <span class="section-num mono">03</span>
+      <h2 class="section-h2">{{ d.zespol.naglowek }}</h2>
+    </div>
+    <ul class="team-grid" role="list">
+      {% for osoba in d.zespol.czlonkowie %}
+      <li class="team-card">
+        <div class="team-card-photo">
+          {% if osoba.zdjecie %}
+          <img src="{{ osoba.zdjecie }}" alt="{{ osoba.alt }}" loading="lazy" />
+          {% else %}
+          <div class="team-photo-placeholder" aria-hidden="true">
+            <span class="team-initials">{{ osoba.imie | truncate(2, true, '') }}</span>
+          </div>
+          {% endif %}
+        </div>
+        <div class="team-card-info">
+          <h3 class="team-name">{{ osoba.imie }}</h3>
+          <p class="team-role mono">{{ osoba.rola }}</p>
+          {% if osoba.bio %}<p class="team-bio">{{ osoba.bio }}</p>{% endif %}
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endif %}

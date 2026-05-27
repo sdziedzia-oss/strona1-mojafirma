@@ -1,0 +1,126 @@
+---
+layout: layouts/base.njk
+bodyClass: page-kontakt
+permalink: /kontakt/index.html
+---
+{%- set d = strona_kontakt -%}
+
+<!-- ═══ PAGE HERO ═══ -->
+<section class="page-hero page-hero--short">
+  <div class="container page-hero-content">
+    <div class="breadcrumb mono"><a href="/">Start</a> / <span aria-current="page">Kontakt</span></div>
+    <h1 class="page-h1">{{ d.h1 }}</h1>
+    <p class="page-sub">{{ d.podtytul }}</p>
+  </div>
+</section>
+
+<!-- ═══ KONTAKT GŁÓWNY ═══ -->
+<section class="section section--contact">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- Lewa kolumna: dane -->
+      <div class="contact-info">
+        <div class="contact-info-block">
+          <span class="contact-label mono">Adres</span>
+          <address class="contact-address">{{ global.kontakt.adres }}</address>
+        </div>
+        <div class="contact-info-block">
+          <span class="contact-label mono">Telefon</span>
+          <a href="tel:{{ global.kontakt.telefon | replace(' ', '') }}" class="contact-val">{{ global.kontakt.telefon }}</a>
+        </div>
+        <div class="contact-info-block">
+          <span class="contact-label mono">E-mail</span>
+          <a href="mailto:{{ global.kontakt.email }}" class="contact-val">{{ global.kontakt.email }}</a>
+        </div>
+
+        {% if global.social.linkedin or global.social.instagram %}
+        <div class="contact-info-block">
+          <span class="contact-label mono">Social media</span>
+          <div class="contact-social">
+            {% if global.social.linkedin %}
+            <a href="{{ global.social.linkedin }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            {% endif %}
+            {% if global.social.instagram %}
+            <a href="{{ global.social.instagram }}" target="_blank" rel="noopener noreferrer">Instagram</a>
+            {% endif %}
+            {% if global.social.behance %}
+            <a href="{{ global.social.behance }}" target="_blank" rel="noopener noreferrer">Behance</a>
+            {% endif %}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+
+      <!-- Prawa kolumna: formularz -->
+      <div class="contact-form-wrap">
+        <p class="form-intro">{{ d.tekst_form }}</p>
+
+        <form
+          name="kontakt"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-pole"
+          class="contact-form"
+          id="contact-form"
+          novalidate
+        >
+          <!-- Honeypot anti-spam -->
+          <p class="visually-hidden">
+            <label>Nie wypełniaj tego pola: <input name="bot-pole" /></label>
+          </p>
+          <input type="hidden" name="form-name" value="kontakt" />
+
+          <div class="form-row form-row--2col">
+            <div class="form-field">
+              <label class="form-label mono" for="imie">Imię i nazwisko *</label>
+              <input class="form-input" type="text" id="imie" name="imie" required autocomplete="name" />
+            </div>
+            <div class="form-field">
+              <label class="form-label mono" for="email">E-mail *</label>
+              <input class="form-input" type="email" id="email" name="email" required autocomplete="email" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label class="form-label mono" for="telefon">Telefon</label>
+              <input class="form-input" type="tel" id="telefon" name="telefon" autocomplete="tel" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label class="form-label mono" for="temat">Temat / rodzaj projektu</label>
+              <select class="form-input form-select" id="temat" name="temat">
+                <option value="">Wybierz…</option>
+                <option value="projektowanie">Projektowanie architektoniczne</option>
+                <option value="nadzor">Nadzór autorski / zarządzanie projektem</option>
+                <option value="consulting">Consulting i doradztwo</option>
+                <option value="inne">Inne</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label class="form-label mono" for="wiadomosc">Wiadomość *</label>
+              <textarea class="form-input form-textarea" id="wiadomosc" name="wiadomosc" rows="6" required placeholder="Opisz swój projekt lub pytanie…"></textarea>
+            </div>
+          </div>
+
+          <div class="form-footer">
+            <p class="form-note mono">* Pola wymagane. Odpowiemy w ciągu 48 godzin.</p>
+            <button type="submit" class="btn btn--primary btn--large">Wyślij wiadomość</button>
+          </div>
+        </form>
+
+        <!-- Komunikat sukcesu (pokazywany przez JS) -->
+        <div class="form-success" id="form-success" hidden aria-live="polite">
+          <p>{{ d.sukces_tekst }}</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

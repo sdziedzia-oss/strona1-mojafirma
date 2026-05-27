@@ -1,0 +1,71 @@
+---
+layout: layouts/base.njk
+bodyClass: page-usluga
+---
+
+<!-- ═══ PAGE HERO ═══ -->
+<section class="page-hero page-hero--short">
+  {% if zdjecie and zdjecie.plik %}
+  <div class="page-hero-bg">
+    <img src="{{ zdjecie.plik }}" alt="{{ zdjecie.alt }}" loading="eager" />
+    <div class="page-hero-overlay"></div>
+  </div>
+  {% endif %}
+  <div class="container page-hero-content">
+    <div class="breadcrumb mono">
+      <a href="/">Start</a> /
+      <a href="/oferta">Oferta</a> /
+      <span aria-current="page">{{ title }}</span>
+    </div>
+    <div class="page-hero-label mono">{{ ikona if ikona else "→" }}</div>
+    <h1 class="page-h1">{{ title }}</h1>
+    <p class="page-sub">{{ opis_krotki }}</p>
+  </div>
+</section>
+
+<!-- ═══ TREŚĆ USŁUGI ═══ -->
+<section class="section section--service-body">
+  <div class="container">
+    <div class="prose-wrap">
+      <div class="prose">
+        {{ content | safe }}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ INNE USŁUGI ═══ -->
+{% set inne_uslugi = collections.uslugi | rejectattr("data.title", title) %}
+{% if inne_uslugi.length %}
+<section class="section section--related">
+  <div class="container">
+    <h2 class="section-h2 mono">Pozostałe usługi</h2>
+    <ul class="services-list services-list--small" role="list">
+      {% for u in inne_uslugi %}
+      <li class="service-row">
+        <a href="{{ u.url }}" class="service-row-link">
+          <span class="service-num mono">{{ u.data.ikona or loop.index }}</span>
+          <span class="service-title">{{ u.data.title }}</span>
+          <span class="service-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endif %}
+
+<!-- ═══ CTA ═══ -->
+<section class="section section--cta-block">
+  <div class="container">
+    <div class="cta-block">
+      <div class="cta-block-text">
+        <h2 class="cta-block-h2">Zainteresowany?</h2>
+        <p>Skontaktuj się — bezpłatna konsultacja wstępna.</p>
+      </div>
+      <div class="cta-block-action">
+        <a href="/kontakt" class="btn btn--primary">Napisz do nas</a>
+      </div>
+    </div>
+  </div>
+</section>

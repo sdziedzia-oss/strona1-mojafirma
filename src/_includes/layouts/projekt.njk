@@ -1,0 +1,114 @@
+---
+layout: layouts/base.njk
+bodyClass: page-projekt
+---
+
+<!-- ═══ PAGE HERO ═══ -->
+<section class="page-hero page-hero--projekt">
+  {% if zdjecie_glowne and zdjecie_glowne.plik %}
+  <div class="page-hero-bg">
+    <img src="{{ zdjecie_glowne.plik }}" alt="{{ zdjecie_glowne.alt }}" loading="eager" />
+    <div class="page-hero-overlay page-hero-overlay--heavy"></div>
+  </div>
+  {% endif %}
+  <div class="container page-hero-content">
+    <div class="breadcrumb mono">
+      <a href="/">Start</a> /
+      <a href="/realizacje">Realizacje</a> /
+      <span aria-current="page">{{ title }}</span>
+    </div>
+    <span class="project-cat-tag mono">{{ kategoria }}</span>
+    <h1 class="page-h1">{{ title }}</h1>
+    <div class="projekt-meta mono">
+      <span>{{ lokalizacja }}</span>
+      <span class="dot" aria-hidden="true">·</span>
+      <span>{{ rok }}</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ OPIS PROJEKTU ═══ -->
+<section class="section section--projekt-body">
+  <div class="container">
+    <div class="projekt-layout">
+
+      <!-- Treść główna -->
+      <div class="projekt-content">
+        {% if opis_krotki %}
+        <p class="section-lead">{{ opis_krotki }}</p>
+        {% endif %}
+        <div class="prose">
+          {{ content | safe }}
+        </div>
+      </div>
+
+      <!-- Panel boczny: metadane -->
+      <aside class="projekt-sidebar">
+        <dl class="projekt-details">
+          <div class="detail-row">
+            <dt class="mono">Kategoria</dt>
+            <dd>{{ kategoria }}</dd>
+          </div>
+          <div class="detail-row">
+            <dt class="mono">Rok</dt>
+            <dd>{{ rok }}</dd>
+          </div>
+          <div class="detail-row">
+            <dt class="mono">Lokalizacja</dt>
+            <dd>{{ lokalizacja }}</dd>
+          </div>
+        </dl>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GALERIA ═══ -->
+{% if galeria and galeria.length %}
+<section class="section section--galeria">
+  <div class="container">
+    <h2 class="section-h2 mono">Galeria</h2>
+    <div class="galeria-grid">
+      {% for zdj in galeria %}
+      <figure class="galeria-item">
+        <img src="{{ zdj.plik }}" alt="{{ zdj.alt }}" loading="lazy" />
+      </figure>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- ═══ INNE REALIZACJE ═══ -->
+{%- set inne = collections.projekty | rejectattr("data.title", title) -%}
+{% if inne.length %}
+<section class="section section--related">
+  <div class="container">
+    <h2 class="section-h2">Inne realizacje</h2>
+    <div class="projects-grid projects-grid--small">
+      {% for p in inne | limit(3) %}
+      <article class="project-card">
+        <a href="{{ p.url }}" class="project-card-link">
+          <div class="project-card-img-wrap">
+            {% if p.data.zdjecie_glowne.plik %}
+            <img src="{{ p.data.zdjecie_glowne.plik }}" alt="{{ p.data.zdjecie_glowne.alt }}" loading="lazy" />
+            {% else %}
+            <div class="project-card-img project-card-img--placeholder"></div>
+            {% endif %}
+            <div class="project-card-overlay"></div>
+          </div>
+          <div class="project-card-info">
+            <span class="project-cat mono">{{ p.data.kategoria }}</span>
+            <h3 class="project-title">{{ p.data.title }}</h3>
+          </div>
+        </a>
+      </article>
+      {% endfor %}
+    </div>
+    <div class="section-cta-row">
+      <a href="/realizacje" class="link-arrow">Wszystkie realizacje <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+{% endif %}
