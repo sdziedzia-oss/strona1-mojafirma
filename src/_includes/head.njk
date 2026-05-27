@@ -1,13 +1,14 @@
 {#-- Wybierz źródło danych dla tej strony --#}
-{%- if page.url == "/" or page.url == "/index.html" -%}
+{%- set _url = (page.url ~ '') if page.url else '' -%}
+{%- if _url == "/" or _url == "/index.html" -%}
   {%- set _pd = strona_home -%}
-{%- elif page.url and '/o-nas' in page.url -%}
+{%- elif '/o-nas' in _url -%}
   {%- set _pd = strona_o_nas -%}
-{%- elif page.url and '/oferta' in page.url and '/oferta/' not in page.url -%}
+{%- elif '/oferta' in _url and '/oferta/' not in _url -%}
   {%- set _pd = strona_oferta -%}
-{%- elif page.url and '/realizacje' in page.url and '/realizacje/' not in page.url -%}
+{%- elif '/realizacje' in _url and '/realizacje/' not in _url -%}
   {%- set _pd = strona_realizacje -%}
-{%- elif page.url and '/kontakt' in page.url -%}
+{%- elif '/kontakt' in _url -%}
   {%- set _pd = strona_kontakt -%}
 {%- else -%}
   {%- set _pd = null -%}
@@ -21,7 +22,7 @@
 {%- set _metaOpis = meta_opis if meta_opis else (_pd.meta_opis if _pd and _pd.meta_opis) -%}
 {%- set _metaOpis = _metaOpis if _metaOpis else global.schema.opis -%}
 
-{%- set _pageUrl = global.base_url + (page.url | replace("/index.html", "/")) -%}
+{%- set _pageUrl = global.base_url + (_url | replace("/index.html", "/")) -%}
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />

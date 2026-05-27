@@ -1,3 +1,1 @@
-module.exports = {
-  layout: "projekt.njk",
-};
+module.exports = {};
