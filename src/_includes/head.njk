@@ -1,13 +1,13 @@
 {#-- Wybierz źródło danych dla tej strony --#}
 {%- if page.url == "/" or page.url == "/index.html" -%}
   {%- set _pd = strona_home -%}
-{%- elif '/o-nas' in page.url -%}
+{%- elif page.url and '/o-nas' in page.url -%}
   {%- set _pd = strona_o_nas -%}
-{%- elif '/oferta' in page.url and not '/oferta/' in page.url -%}
+{%- elif page.url and '/oferta' in page.url and '/oferta/' not in page.url -%}
   {%- set _pd = strona_oferta -%}
-{%- elif '/realizacje' in page.url and not '/realizacje/' in page.url -%}
+{%- elif page.url and '/realizacje' in page.url and '/realizacje/' not in page.url -%}
   {%- set _pd = strona_realizacje -%}
-{%- elif '/kontakt' in page.url -%}
+{%- elif page.url and '/kontakt' in page.url -%}
   {%- set _pd = strona_kontakt -%}
 {%- else -%}
   {%- set _pd = null -%}

@@ -47,12 +47,12 @@ permalink: /realizacje/index.html
   {% if collections.projekty and collections.projekty.length %}
   <ul class="rl-list" id="rl-list">
     {% for projekt in collections.projekty %}
-    <li class="rl-row{% if projekt.url %} rl-row--l{% endif %}"
+    <li class="rl-row{% if projekt.data.ma_podstrone !== false %} rl-row--l{% endif %}"
         data-cat="{{ projekt.data.kategoria }}">
       <span class="rl-c-nr mono">{{ loop.index | padStart(2,'0') }}</span>
       <span class="rl-c-rok mono">{{ projekt.data.rok }}</span>
       <div class="rl-c-main">
-        {% if projekt.url %}
+        {% if projekt.data.ma_podstrone !== false %}
           <a href="{{ projekt.url }}" class="rl-name">
             {{- projekt.data.title -}}<span class="rl-arr" aria-hidden="true">→</span>
           </a>
