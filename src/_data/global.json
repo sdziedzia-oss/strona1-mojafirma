@@ -1,16 +1,16 @@
 {
-  "nazwa_firmy": "FORMA | Architektura",
+  "nazwa_firmy": "Art Projekt",
   "tagline": "Przestrzenie, które trwają.",
-  "base_url": "https://forma-architektura.pl",
+  "base_url": "https://artprojekt.pl",
   "logo": {
-    "plik": "/assets/images/logo.png",
-    "alt": "FORMA Architektura – logo",
-    "uzyj_obrazu": false
+    "plik": "/assets/images/logo.svg",
+    "alt": "Art Projekt – logo",
+    "uzyj_obrazu": true
   },
   "kontakt": {
-    "adres": "ul. Marszałkowska 10, 00-590 Warszawa",
-    "telefon": "+48 22 123 45 67",
-    "email": "biuro@forma-architektura.pl"
+    "adres": "ul. Wyszyńskiego 2b, 15-888 Białystok",
+    "telefon": "+48 85 123 45 67",
+    "email": "biuro@artprojekt.pl"
   },
   "social": {
     "linkedin": "https://linkedin.com/company/forma-architektura",
