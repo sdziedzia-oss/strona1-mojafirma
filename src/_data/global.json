@@ -3,7 +3,7 @@
   "tagline": "Przestrzenie, które trwają.",
   "base_url": "https://forma-architektura.pl",
   "logo": {
-    "plik": "",
+    "plik": "/assets/images/logo.png",
     "alt": "FORMA Architektura – logo",
     "uzyj_obrazu": false
   },

@@ -17,35 +17,36 @@ if(cur && ring){
 }
 
 /* ─── PRELOADER ───────────────────────────────────────────── */
-const pl   = document.getElementById('preloader');
-const hero = document.getElementById('hero') || document.querySelector('.hero');
+const pl       = document.getElementById('preloader');
+const plLogo   = document.getElementById('pl-logo-wrap');
+const plSpread = document.getElementById('pl-spread-line');
+const hero     = document.getElementById('hero') || document.querySelector('.hero');
 
 function revealPage(){
-  if(pl){ pl.classList.add('leave'); setTimeout(()=>{ pl.classList.add('gone'); if(hero) hero.classList.add('hero-ready'); }, 1250); }
-  else   { if(hero) hero.classList.add('hero-ready'); }
+  if(!pl){ if(hero) hero.classList.add('hero-ready'); return; }
+  // 1. Spread the gold line outward
+  pl.classList.add('pl-spread');
+  // 2. After spread, sweep panel up
+  setTimeout(()=> pl.classList.add('pl-leave'), 750);
+  // 3. After sweep, show hero
+  setTimeout(()=>{
+    pl.classList.add('gone');
+    if(hero) hero.classList.add('hero-ready');
+  }, 1850);
 }
 
 if(pl){
-  // First visit in session → full preloader; subsequent → instant
   const seen = sessionStorage.getItem('forma_visited');
   if(seen){
+    // Subsequent visits: skip preloader entirely
     pl.classList.add('gone');
-    if(hero){ hero.classList.add('hero-ready','skip-preloader'); }
+    if(hero) hero.classList.add('hero-ready','skip-preloader');
   } else {
     sessionStorage.setItem('forma_visited','1');
-    const fill  = document.getElementById('pl-fill');
-    const num   = document.getElementById('pl-num');
-    const total = 2400;
-    const t0    = performance.now();
-    function ease(t){ return t<.5?2*t*t:-1+(4-2*t)*t; }
-    (function tick(){
-      const p = Math.min((performance.now()-t0)/total,1);
-      const v = Math.round(ease(p)*100);
-      if(num)  num.textContent  = String(v).padStart(3,'0');
-      if(fill) fill.style.width = v+'%';
-      if(p<1)  requestAnimationFrame(tick);
-      else     setTimeout(revealPage,280);
-    })();
+    // Step 1: fade logo in
+    setTimeout(()=>{ if(plLogo) plLogo.classList.add('pl-vis'); }, 200);
+    // Step 2: trigger reveal sequence after logo is visible
+    setTimeout(revealPage, 1100);
   }
 } else {
   if(hero) hero.classList.add('hero-ready');
@@ -101,12 +102,24 @@ const cio = new IntersectionObserver(entries=>{
 },{threshold:.5});
 document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
 
+/* ─── HERO SLIDESHOW ──────────────────────────────────────── */
+(function(){
+  const slides = document.querySelectorAll('.hero-slide');
+  if(slides.length < 2) return;
+  let cur = 0;
+  setInterval(()=>{
+    slides[cur].classList.remove('is-active');
+    cur = (cur + 1) % slides.length;
+    slides[cur].classList.add('is-active');
+  }, 7000);
+})();
+
 /* ─── HERO PARALLAX ───────────────────────────────────────── */
 const heroText = document.querySelector('.hero-text');
 if(heroText){
   window.addEventListener('scroll',()=>{
     const sy=window.scrollY, vh=window.innerHeight;
-    if(sy<vh){ heroText.style.transform=`translateY(${sy*.28}px)`; heroText.style.opacity=String(1-sy/vh*1.4); }
+    if(sy<vh){ heroText.style.transform=`translateY(${sy*.2}px)`; heroText.style.opacity=String(1-sy/vh*1.2); }
   },{passive:true});
 }
 

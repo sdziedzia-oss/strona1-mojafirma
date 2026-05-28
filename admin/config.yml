@@ -82,8 +82,17 @@ collections:
               - { label: "Podtytuł / opis",         name: "podtytul",  widget: "text" }
               - { label: "Tekst przycisku CTA",      name: "cta_tekst", widget: "string", default: "Zobacz realizacje" }
               - { label: "Link przycisku CTA",       name: "cta_link",  widget: "string", default: "/realizacje" }
-              - { label: "Zdjęcie tła",              name: "zdjecie",   widget: "image",  required: false }
+              - { label: "Zdjęcie tła (fallback)",   name: "zdjecie",   widget: "image",  required: false }
               - { label: "Tekst alt zdjęcia",        name: "zdjecie_alt", widget: "string", required: false }
+              - label: "Slideshow – zdjęcia tła"
+                name: "slideshow"
+                widget: "list"
+                required: false
+                label_singular: "Zdjęcie"
+                hint: "Dodaj kilka zdjęć – zmieniają się automatycznie co 7 s"
+                fields:
+                  - { label: "Plik zdjęcia", name: "plik", widget: "image" }
+                  - { label: "Opis alt",     name: "alt",  widget: "string", required: false }
           - label: "Sekcja – O nas (skrót)"
             name: "o_nas_skrot"
             widget: "object"

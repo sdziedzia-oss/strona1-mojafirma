@@ -9,18 +9,18 @@
   <div class="cursor" id="cursor" aria-hidden="true"></div>
   <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
 
-  <!-- Preloader (kontrolowany przez JS – sessionStorage) -->
+  <!-- Preloader -->
   <div id="preloader" role="status" aria-label="Ładowanie">
-    <div class="pl-half pl-top">
-      <div class="pl-center">
-        <div class="pl-logo">{{ global.nazwa_firmy | upper }}</div>
-        <div class="pl-progress">
-          <div class="pl-bar"><div class="pl-fill" id="pl-fill"></div></div>
-          <div class="pl-num" id="pl-num">000</div>
-        </div>
+    <div class="pl-panel" id="pl-panel">
+      <div class="pl-logo-wrap" id="pl-logo-wrap">
+        {% if global.logo.uzyj_obrazu and global.logo.plik %}
+          <img src="{{ global.logo.plik }}" alt="{{ global.logo.alt }}" class="pl-logo-img" />
+        {% else %}
+          <span class="pl-logo-text">{{ global.nazwa_firmy | replace(" | ", " <span class='pl-sep'>|</span> ") | safe }}</span>
+        {% endif %}
       </div>
+      <div class="pl-spread-line" id="pl-spread-line" aria-hidden="true"></div>
     </div>
-    <div class="pl-half pl-bottom"></div>
   </div>
 
   {% include "header.njk" %}

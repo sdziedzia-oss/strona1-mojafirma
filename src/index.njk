@@ -7,28 +7,47 @@ permalink: /index.html
 
 <!-- ═══ HERO ═══ -->
 <section id="hero" class="hero" aria-label="Główny baner">
-  <div class="hero-grid" aria-hidden="true"></div>
+
+  <!-- Background slideshow -->
+  <div class="hero-slides" aria-hidden="true">
+    {% if d.hero.slideshow and d.hero.slideshow.length %}
+      {% for img in d.hero.slideshow %}
+      <div class="hero-slide{% if loop.first %} is-active{% endif %}"
+           style="background-image:url('{{ img.plik }}')"></div>
+      {% endfor %}
+    {% elif d.hero.zdjecie %}
+      <div class="hero-slide is-active"
+           style="background-image:url('{{ d.hero.zdjecie }}')"></div>
+    {% else %}
+      <div class="hero-slide hero-slide--ph is-active"></div>
+    {% endif %}
+  </div>
+
+  <div class="hero-overlay" aria-hidden="true"></div>
   <div class="hero-noise" aria-hidden="true"></div>
-  <div class="hero-grad" aria-hidden="true"></div>
 
-  {% if d.hero.zdjecie %}
-  <img src="{{ d.hero.zdjecie }}" alt="{{ d.hero.zdjecie_alt }}" class="hero-bg-img" loading="eager" />
-  <div class="hero-bg-overlay" aria-hidden="true"></div>
-  {% endif %}
+  <!-- Top labels -->
+  <div class="hero-est mono" aria-hidden="true">EST. 2004</div>
+  <div class="hero-coord mono" aria-hidden="true">52°N · 21°E<br><span>WARSZAWA, PL</span></div>
 
-
-  <div class="hero-coord" aria-hidden="true">52.2297° N<br>21.0122° E<br><span style="opacity:.4">WARSZAWA, PL</span></div>
-
+  <!-- Main headline -->
   <div class="hero-text">
-    <div class="hero-tag">
-      <span class="tag-line" aria-hidden="true"></span>
-      <span class="hero-tag-inner">{{ global.tagline }}</span>
-    </div>
     <h1 class="hero-h1">
       <span class="h1-line h1-l1"><span class="h1-inner">{{ d.hero.h1_linia1 }}</span></span>
       <span class="h1-line h1-l2"><span class="h1-inner">{{ d.hero.h1_linia2 }}</span></span>
     </h1>
-    <div class="hero-sub-row">
+  </div>
+
+  <!-- Bottom bar: logo left · tagline + CTA right -->
+  <div class="hero-bottom">
+    <div class="hero-logo-area">
+      {% if global.logo.uzyj_obrazu and global.logo.plik %}
+        <img src="{{ global.logo.plik }}" alt="{{ global.logo.alt }}" class="hero-logo-img" />
+      {% else %}
+        <span class="hero-logo-text">{{ global.nazwa_firmy | replace(" | ", " <span class='logo-sep'>|</span> ") | safe }}</span>
+      {% endif %}
+    </div>
+    <div class="hero-bottom-right">
       <p class="hero-sub"><span class="hero-sub-inner">{{ d.hero.podtytul }}</span></p>
       <div class="hero-cta">
         <div class="hero-cta-inner">
@@ -41,7 +60,7 @@ permalink: /index.html
 
   <div class="hero-scroll" aria-hidden="true">
     <div class="scroll-arrow"></div>
-    <span>Przewiń</span>
+    <span>scroll</span>
   </div>
 </section>
 
