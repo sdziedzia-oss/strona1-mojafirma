@@ -9,17 +9,19 @@
   <div class="cursor" id="cursor" aria-hidden="true"></div>
   <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
 
-  <!-- Preloader -->
+  <!-- Preloader: two-panel screen tear -->
   <div id="preloader" role="status" aria-label="Ładowanie">
-    <div class="pl-panel" id="pl-panel">
-      <div class="pl-logo-wrap" id="pl-logo-wrap">
-        {% if global.logo.uzyj_obrazu and global.logo.plik %}
-          <img src="{{ global.logo.plik }}" alt="{{ global.logo.alt }}" class="pl-logo-img" />
-        {% else %}
-          <span class="pl-logo-text">{{ global.nazwa_firmy | replace(" | ", " <span class='pl-sep'>|</span> ") | safe }}</span>
-        {% endif %}
-      </div>
-      <div class="pl-spread-line" id="pl-spread-line" aria-hidden="true"></div>
+    <div class="pl-bg-top" id="pl-bg-top"></div>
+    <div class="pl-bg-bot" id="pl-bg-bot"></div>
+    <div class="pl-split-line" id="pl-split-line" aria-hidden="true"></div>
+    <div class="pl-logo-wrap" id="pl-logo-wrap">
+      {% if global.logo.uzyj_obrazu and global.logo.plik %}
+        <img src="{{ global.logo.plik }}" alt="{{ global.logo.alt }}" class="pl-logo-img pl-logo-main" />
+        <img src="{{ global.logo.plik }}" alt="" class="pl-logo-img pl-logo-top" aria-hidden="true" />
+        <img src="{{ global.logo.plik }}" alt="" class="pl-logo-img pl-logo-bot" aria-hidden="true" />
+      {% else %}
+        <span class="pl-logo-text">{{ global.nazwa_firmy }}</span>
+      {% endif %}
     </div>
   </div>
 

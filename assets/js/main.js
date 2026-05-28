@@ -17,23 +17,21 @@ if(cur && ring){
 }
 
 /* ─── PRELOADER ───────────────────────────────────────────── */
-const pl       = document.getElementById('preloader');
-const plLogo   = document.getElementById('pl-logo-wrap');
-const plSpread = document.getElementById('pl-spread-line');
-const hero     = document.getElementById('hero') || document.querySelector('.hero');
+const pl     = document.getElementById('preloader');
+const plLogo = document.getElementById('pl-logo-wrap');
+const hero   = document.getElementById('hero') || document.querySelector('.hero');
 
 function revealPage(){
   if(!pl){ if(hero) hero.classList.add('hero-ready'); return; }
-  // 1. Line AND logo spread simultaneously (same timing, same moment)
+  // 1. Orange slice line cuts across screen (0.22s)
   pl.classList.add('pl-spread');
-  if(plLogo) plLogo.classList.add('pl-spread-logo');
-  // 2. After spread (~780ms), sweep panel up
-  setTimeout(()=> pl.classList.add('pl-leave'), 820);
-  // 3. After sweep, show hero
+  // 2. Screen tears — panels fly up/down, logo splits (1.1s transition)
   setTimeout(()=>{
-    pl.classList.add('gone');
+    pl.classList.add('pl-leave');
     if(hero) hero.classList.add('hero-ready');
-  }, 1950);
+  }, 200);
+  // 3. Panels fully off-screen → remove preloader from layout
+  setTimeout(()=> pl.classList.add('gone'), 1600);
 }
 
 if(pl){
@@ -44,9 +42,9 @@ if(pl){
     if(hero) hero.classList.add('hero-ready','skip-preloader');
   } else {
     sessionStorage.setItem('forma_visited','1');
-    // Step 1: fade logo in
+    // Fade logo in
     setTimeout(()=>{ if(plLogo) plLogo.classList.add('pl-vis'); }, 200);
-    // Step 2: trigger reveal sequence after logo is visible
+    // Trigger reveal after logo is visible
     setTimeout(revealPage, 1100);
   }
 } else {
