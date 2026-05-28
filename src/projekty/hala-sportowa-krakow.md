@@ -10,7 +10,7 @@ zdjecie_glowne:
   alt: "Hala Sportowa Kraków Nowa Huta – widok zewnętrzny"
 galeria: []
 wyrozniony: true
-meta_tytul: "Hala Sportowa Kraków Nowa Huta – FORMA | Architektura"
+meta_tytul: "Hala Sportowa Kraków Nowa Huta – Art Projekt"
 meta_opis: "Wielofunkcyjna hala sportowa w Krakowie na 5000 widzów. Projekt i realizacja nowoczesnej areny sportowej w dzielnicy Nowa Huta."
 ---
 

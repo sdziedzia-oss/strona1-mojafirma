@@ -10,7 +10,7 @@ zdjecie_glowne:
   alt: "Centrum Kultury Metropolitalnej w Gdańsku – widok nocny"
 galeria: []
 wyrozniony: true
-meta_tytul: "Centrum Kultury Metropolitalnej Gdańsk – FORMA | Architektura"
+meta_tytul: "Centrum Kultury Metropolitalnej Gdańsk – Art Projekt"
 meta_opis: "Projekt Centrum Kultury Metropolitalnej w Gdańsku na terenie Młodego Miasta. Wielofunkcyjny obiekt kulturalny 12000 m²."
 ---
 

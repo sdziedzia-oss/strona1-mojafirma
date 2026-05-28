@@ -6,7 +6,7 @@ opis: "Refleksja o roli pracowni architektonicznej wobec wspólnoty i przestrzen
 zdjecie:
   plik: ""
   alt: "Szkice architektoniczne"
-meta_tytul: "Architektura publiczna jako akt odpowiedzialności – blog FORMA"
+meta_tytul: "Architektura publiczna jako akt odpowiedzialności – blog Art Projekt"
 meta_opis: "Refleksja o roli pracowni architektonicznej wobec wspólnoty. Jak projektować przestrzenie publiczne, które służą pokoleniom."
 ---
 

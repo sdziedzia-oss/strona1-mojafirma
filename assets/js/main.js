@@ -1,4 +1,4 @@
-/* FORMA | Architektura – main.js
+/* Art Projekt – main.js
    Preloader · Cursor · Scroll reveals · Counter · Gallery */
 (function(){
 "use strict";
@@ -35,13 +35,13 @@ function revealPage(){
 }
 
 if(pl){
-  const seen = sessionStorage.getItem('forma_visited');
+  const seen = sessionStorage.getItem('artprojekt_visited');
   if(seen){
     // Subsequent visits: skip preloader entirely
     pl.classList.add('gone');
     if(hero) hero.classList.add('hero-ready','skip-preloader');
   } else {
-    sessionStorage.setItem('forma_visited','1');
+    sessionStorage.setItem('artprojekt_visited','1');
     // Fade logo in
     setTimeout(()=>{ if(plLogo) plLogo.classList.add('pl-vis'); }, 200);
     // Trigger reveal after logo is visible

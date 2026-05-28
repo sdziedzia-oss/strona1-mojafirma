@@ -6,7 +6,7 @@ ikona: "02"
 zdjecie:
   plik: ""
   alt: "Nadzór budowlany i zarządzanie projektem"
-meta_tytul: "Zarządzanie procesem budowlanym – FORMA | Architektura"
+meta_tytul: "Zarządzanie procesem budowlanym – Art Projekt"
 meta_opis: "Nadzór autorski i zarządzanie procesem budowlanym. Zapewniamy zgodność realizacji z projektem architektonicznym."
 ---
 

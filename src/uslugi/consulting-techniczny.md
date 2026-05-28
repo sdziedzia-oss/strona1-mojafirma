@@ -6,7 +6,7 @@ ikona: "03"
 zdjecie:
   plik: ""
   alt: "Consulting architektoniczny i doradztwo techniczne"
-meta_tytul: "Consulting architektoniczny – FORMA | Architektura"
+meta_tytul: "Consulting architektoniczny – Art Projekt"
 meta_opis: "Doradztwo techniczne i consulting architektoniczny. Audyty projektowe, oceny techniczne, opinie eksperckie dla obiektów użyteczności publicznej."
 ---
 

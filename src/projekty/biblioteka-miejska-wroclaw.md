@@ -10,7 +10,7 @@ zdjecie_glowne:
   alt: "Biblioteka Miejska we Wrocławiu – fasada główna"
 galeria: []
 wyrozniony: true
-meta_tytul: "Biblioteka Miejska Wrocław – realizacja FORMA | Architektura"
+meta_tytul: "Biblioteka Miejska Wrocław – realizacja Art Projekt"
 meta_opis: "Projekt i realizacja nowej siedziby Biblioteki Miejskiej we Wrocławiu. 8600 m² nowoczesnej przestrzeni bibliotecznej w centrum miasta."
 ---
 

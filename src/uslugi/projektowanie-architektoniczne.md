@@ -6,7 +6,7 @@ ikona: "01"
 zdjecie:
   plik: ""
   alt: "Projektowanie architektoniczne – szkice i plany"
-meta_tytul: "Projektowanie architektoniczne – FORMA | Architektura"
+meta_tytul: "Projektowanie architektoniczne – Art Projekt"
 meta_opis: "Kompleksowe usługi projektowania architektonicznego obiektów użyteczności publicznej. Projekt koncepcyjny, budowlany i wykonawczy."
 ---
 
