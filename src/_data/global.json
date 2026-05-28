@@ -3,7 +3,7 @@
   "tagline": "Przestrzenie, które trwają.",
   "base_url": "https://artprojekt.pl",
   "logo": {
-    "plik": "/assets/images/logo.svg",
+    "plik": "/assets/images/logo.png",
     "alt": "Art Projekt – logo",
     "uzyj_obrazu": true
   },
@@ -20,7 +20,7 @@
   },
   "stopka": {
     "opis": "Projektujemy budynki użyteczności publicznej, które łączą precyzję techniczną z trwałą wartością architektoniczną.",
-    "prawa": "© 2025 FORMA | Architektura. Wszelkie prawa zastrzeżone."
+    "prawa": "© 2025 Art Projekt. Wszelkie prawa zastrzeżone."
   },
   "schema": {
     "typ": "ProfessionalService",

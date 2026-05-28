@@ -78,7 +78,7 @@ h1,h2,h3,h4{line-height:.95;letter-spacing:-.025em}
   transition:opacity .5s var(--ease),transform .6s var(--ease);
 }
 .pl-logo-wrap.pl-vis{opacity:1;transform:scale(1)}
-.pl-logo-img{height:56px;width:auto;display:block}
+.pl-logo-img{height:64px;width:auto;max-width:260px;display:block;object-fit:contain;object-position:center}
 .pl-logo-text{
   font-family:var(--serif);font-size:1.6rem;font-weight:300;
   letter-spacing:.12em;color:var(--text);white-space:nowrap;
@@ -117,7 +117,8 @@ h1,h2,h3,h4{line-height:.95;letter-spacing:-.025em}
 }
 .header-logo:hover,.h-logo:hover{color:var(--gold)}
 .logo-sep{color:var(--gold)}
-.logo-img{height:32px;width:auto}
+/* PNG logo ma duże marginesy wewnętrzne – obiekt-fit + max-height kontroluje wielkość */
+.logo-img{height:40px;width:auto;max-width:180px;object-fit:contain;object-position:left center}
 
 /* Nav */
 .main-nav,.h-nav{
@@ -265,7 +266,8 @@ h1,h2,h3,h4{line-height:.95;letter-spacing:-.025em}
 }
 .hero-logo-area{overflow:hidden}
 .hero-logo-img{
-  height:clamp(36px,3.5vw,54px);width:auto;display:block;
+  height:clamp(40px,4vw,60px);width:auto;max-width:240px;display:block;
+  object-fit:contain;object-position:left center;
   opacity:0;transform:translateY(1.5rem);
   transition:opacity .9s var(--ease),transform .9s var(--ease);
 }
