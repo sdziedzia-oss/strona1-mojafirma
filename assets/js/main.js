@@ -24,15 +24,16 @@ const hero     = document.getElementById('hero') || document.querySelector('.her
 
 function revealPage(){
   if(!pl){ if(hero) hero.classList.add('hero-ready'); return; }
-  // 1. Spread the gold line outward
+  // 1. Line AND logo spread simultaneously (same timing, same moment)
   pl.classList.add('pl-spread');
-  // 2. After spread, sweep panel up
-  setTimeout(()=> pl.classList.add('pl-leave'), 750);
+  if(plLogo) plLogo.classList.add('pl-spread-logo');
+  // 2. After spread (~780ms), sweep panel up
+  setTimeout(()=> pl.classList.add('pl-leave'), 820);
   // 3. After sweep, show hero
   setTimeout(()=>{
     pl.classList.add('gone');
     if(hero) hero.classList.add('hero-ready');
-  }, 1850);
+  }, 1950);
 }
 
 if(pl){
