@@ -98,11 +98,11 @@
         "name": "Poland"
       },
       "telephone": "{{ global.kontakt.telefon }}",
-      "email": "{{ global.kontakt.email }}"{% if global.social.linkedin %},
-      "sameAs": [
-        "{{ global.social.linkedin }}"{% if global.social.instagram %},
-        "{{ global.social.instagram }}"{% endif %}{% if global.social.facebook %},
-        "{{ global.social.facebook }}"{% endif %}
+      "email": "{{ global.kontakt.email }}"{% if global.social.instagram or global.social.facebook or global.social.behance %},
+      "sameAs": [{% if global.social.instagram %}
+        "{{ global.social.instagram }}"{% endif %}{% if global.social.facebook %}{% if global.social.instagram %},{% endif %}
+        "{{ global.social.facebook }}"{% endif %}{% if global.social.behance %}{% if global.social.instagram or global.social.facebook %},{% endif %}
+        "{{ global.social.behance }}"{% endif %}
       ]{% endif %}
     },
     {
