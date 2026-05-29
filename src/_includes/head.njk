@@ -22,52 +22,98 @@
 {%- set _metaOpis = meta_opis if meta_opis else (_pd.meta_opis if _pd and _pd.meta_opis) -%}
 {%- set _metaOpis = _metaOpis if _metaOpis else global.schema.opis -%}
 
-{%- set _pageUrl = global.base_url + (_url | replace("/index.html", "/")) -%}
+{%- set _pageUrl  = global.base_url + (_url | replace("/index.html", "/")) -%}
+{%- set _ogImage  = global.base_url + global.og_image -%}
 
+<!-- ── Podstawowe ──────────────────────────────────────────── -->
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>{{ _metaTytul }}</title>
 <meta name="description" content="{{ _metaOpis }}" />
 <link rel="canonical" href="{{ _pageUrl }}" />
+<meta name="robots" content="index, follow" />
 
-<!-- Open Graph -->
-<meta property="og:title"       content="{{ _metaTytul }}" />
-<meta property="og:description" content="{{ _metaOpis }}" />
-<meta property="og:url"         content="{{ _pageUrl }}" />
-<meta property="og:type"        content="website" />
-<meta property="og:site_name"   content="{{ global.nazwa_firmy }}" />
+<!-- ── Open Graph ─────────────────────────────────────────── -->
+<meta property="og:title"        content="{{ _metaTytul }}" />
+<meta property="og:description"  content="{{ _metaOpis }}" />
+<meta property="og:url"          content="{{ _pageUrl }}" />
+<meta property="og:type"         content="website" />
+<meta property="og:site_name"    content="{{ global.nazwa_firmy }}" />
+<meta property="og:locale"       content="pl_PL" />
+<meta property="og:image"        content="{{ _ogImage }}" />
+<meta property="og:image:width"  content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt"    content="{{ global.nazwa_firmy }} – pracownia architektoniczna" />
 
-<!-- Favicon -->
+<!-- ── Twitter / X ───────────────────────────────────────── -->
+<meta name="twitter:card"        content="summary_large_image" />
+<meta name="twitter:title"       content="{{ _metaTytul }}" />
+<meta name="twitter:description" content="{{ _metaOpis }}" />
+<meta name="twitter:image"       content="{{ _ogImage }}" />
+
+<!-- ── Ikony i motyw ─────────────────────────────────────── -->
 <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+<meta name="theme-color" content="#070605" />
 
-<!-- Fonts: Cormorant Garamond + DM Mono + Outfit -->
+<!-- ── Język i region ────────────────────────────────────── -->
+<link rel="alternate" hreflang="pl" href="{{ _pageUrl }}" />
+<link rel="alternate" hreflang="x-default" href="{{ _pageUrl }}" />
+
+<!-- ── Czcionki ──────────────────────────────────────────── -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-<!-- Główny arkusz stylów -->
+<!-- ── Arkusz stylów ─────────────────────────────────────── -->
 <link rel="stylesheet" href="/assets/css/style.css" />
 
-<!-- Schema.org -->
-{% if page.url == "/" or page.url == "/index.html" %}
+<!-- ── Schema.org ────────────────────────────────────────── -->
+{% if _url == "/" or _url == "/index.html" %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "{{ global.schema.typ }}",
-  "name": "{{ global.nazwa_firmy }}",
-  "url": "{{ global.base_url }}",
-  "description": "{{ global.schema.opis }}",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "{{ global.kontakt.adres }}"
-  },
-  "telephone": "{{ global.kontakt.telefon }}",
-  "email": "{{ global.kontakt.email }}"{% if global.social.linkedin %},
-  "sameAs": [
-    "{{ global.social.linkedin }}"{% if global.social.instagram %},
-    "{{ global.social.instagram }}"{% endif %}{% if global.social.facebook %},
-    "{{ global.social.facebook }}"{% endif %}
-  ]{% endif %}
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "{{ global.base_url }}/#organization",
+      "name": "{{ global.nazwa_firmy }}",
+      "url": "{{ global.base_url }}",
+      "description": "{{ global.schema.opis }}",
+      "foundingYear": "{{ global.zalozono }}",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ global.base_url }}{{ global.logo.plik }}"
+      },
+      "image": "{{ _ogImage }}",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "{{ global.kontakt.ulica }}",
+        "postalCode": "{{ global.kontakt.kod }}",
+        "addressLocality": "{{ global.kontakt.miasto }}",
+        "addressCountry": "PL"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Poland"
+      },
+      "telephone": "{{ global.kontakt.telefon }}",
+      "email": "{{ global.kontakt.email }}"{% if global.social.linkedin %},
+      "sameAs": [
+        "{{ global.social.linkedin }}"{% if global.social.instagram %},
+        "{{ global.social.instagram }}"{% endif %}{% if global.social.facebook %},
+        "{{ global.social.facebook }}"{% endif %}
+      ]{% endif %}
+    },
+    {
+      "@type": "WebSite",
+      "@id": "{{ global.base_url }}/#website",
+      "url": "{{ global.base_url }}",
+      "name": "{{ global.nazwa_firmy }}",
+      "description": "{{ global.schema.opis }}",
+      "publisher": { "@id": "{{ global.base_url }}/#organization" }
+    }
+  ]
 }
 </script>
 {% else %}
@@ -75,13 +121,32 @@
 {
   "@context": "https://schema.org",
   "@type": "WebPage",
+  "@id": "{{ _pageUrl }}#webpage",
   "name": "{{ _metaTytul }}",
   "description": "{{ _metaOpis }}",
   "url": "{{ _pageUrl }}",
   "isPartOf": {
     "@type": "WebSite",
+    "@id": "{{ global.base_url }}/#website",
     "name": "{{ global.nazwa_firmy }}",
     "url": "{{ global.base_url }}"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "{{ global.nazwa_firmy }}",
+        "item": "{{ global.base_url }}/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "{{ title if title else _metaTytul }}",
+        "item": "{{ _pageUrl }}"
+      }
+    ]
   }
 }
 </script>

@@ -2,6 +2,8 @@
   "nazwa_firmy": "Art Projekt",
   "tagline": "Przestrzenie, które trwają.",
   "base_url": "https://artprojekt.pl",
+  "og_image": "/assets/images/og-image.jpg",
+  "zalozono": "2004",
   "logo": {
     "plik": "/assets/images/logo.png",
     "alt": "Art Projekt – logo",
@@ -9,6 +11,9 @@
   },
   "kontakt": {
     "adres": "ul. Wyszyńskiego 2b, 15-888 Białystok",
+    "ulica": "ul. Wyszyńskiego 2b",
+    "kod": "15-888",
+    "miasto": "Białystok",
     "telefon": "+48 85 123 45 67",
     "email": "biuro@artprojekt.pl"
   },
@@ -24,6 +29,6 @@
   },
   "schema": {
     "typ": "ProfessionalService",
-    "opis": "Pracownia architektoniczna specjalizująca się w projektowaniu obiektów użyteczności publicznej o najwyższym standardzie wykonania."
+    "opis": "Pracownia architektoniczna Art Projekt z Białegostoku – projektowanie obiektów użyteczności publicznej: biblioteki, centra kultury, obiekty sportowe i edukacyjne."
   }
 }

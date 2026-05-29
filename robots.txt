@@ -1,18 +1,5 @@
-# Robots.txt – generowany automatycznie
-
-# Blokuj indeksowanie tymczasowej domeny Netlify
 User-agent: *
-Disallow: /
-
-Host: WSTAW_TU_SWOJA_DOMENE.pl
-
-# Zezwól tylko docelowej domenie (skonfiguruj poniżej)
-# Zamiast tej blokady – po wdrożeniu na własnej domenie
-# zmień na właściwą konfigurację w pliku src/robots.njk
-
-# Panel administracyjny – zablokowany dla wszystkich
-User-agent: *
+Allow: /
 Disallow: /admin/
 
-# Sitemap
-Sitemap: https://WSTAW_TU_SWOJA_DOMENE.pl/sitemap.xml
+Sitemap: https://artprojekt.pl/sitemap.xml

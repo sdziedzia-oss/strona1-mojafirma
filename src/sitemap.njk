@@ -17,11 +17,6 @@ eleventyExcludeFromCollections: true
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>{{ global.base_url }}/oferta/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>{{ global.base_url }}/realizacje/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -32,20 +27,11 @@ eleventyExcludeFromCollections: true
     <priority>0.7</priority>
   </url>
 
-  <!-- Usługi -->
-  {% for usluga in collections.uslugi %}
-  <url>
-    <loc>{{ global.base_url }}{{ usluga.url }}</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  {% endfor %}
-
   <!-- Realizacje -->
   {% for projekt in collections.projekty %}
   <url>
     <loc>{{ global.base_url }}{{ projekt.url }}</loc>
-    <changefreq>monthly</changefreq>
+    <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   {% endfor %}
