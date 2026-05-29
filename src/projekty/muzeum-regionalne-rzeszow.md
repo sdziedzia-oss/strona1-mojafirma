@@ -1,7 +1,7 @@
 ---
 title: "Muzeum Regionalne w Rzeszowie"
 kolejnosc: 14
-kategoria: "Centra kultury"
+kategoria: "Budynki użyteczności publicznej"
 rok: "2015"
 lokalizacja: "Rzeszów"
 opis_krotki: "Nowy budynek muzeum z salami wystawienniczymi, pracownią konserwatorską i archiwum. 6 800 m². Nagroda Architektura Roku 2016."

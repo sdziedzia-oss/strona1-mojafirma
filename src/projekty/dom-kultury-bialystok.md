@@ -1,7 +1,7 @@
 ---
 title: "Dom Kultury w Białymstoku"
 kolejnosc: 12
-kategoria: "Centra kultury"
+kategoria: "Budynki użyteczności publicznej"
 rok: "2017"
 lokalizacja: "Białystok"
 opis_krotki: "Modernizacja historycznej siedziby i dobudowa nowego skrzydła z salą widowiskową na 420 osób. Projekt w dialogu z XIX-wieczną substancją."

@@ -1,10 +1,10 @@
 {
-  "meta_tytul": "Art Projekt – Projektowanie Obiektów Użyteczności Publicznej",
-  "meta_opis": "Art Projekt – pracownia architektoniczna z Białegostoku. Projektujemy biblioteki, centra kultury i obiekty sportowe o najwyższym standardzie wykonania.",
+  "meta_tytul": "Art Projekt – Pracownia Architektoniczna Białystok",
+  "meta_opis": "Art Projekt – pracownia architektoniczna z Białegostoku. Projektujemy domy, budynki wielorodzinne, obiekty użyteczności publicznej i wnętrza.",
   "hero": {
     "h1_linia1": "Architektura",
     "h1_linia2": "jako zapis czasu.",
-    "podtytul": "Projektujemy przestrzenie publiczne, które definiują charakter miast i służą pokoleniom.",
+    "podtytul": "Projektujemy przestrzenie, które definiują charakter miejsc i służą pokoleniom.",
     "cta_tekst": "Zobacz realizacje",
     "cta_link": "/realizacje",
     "zdjecie": "",
@@ -17,9 +17,9 @@
     "cta": "Poznaj nas"
   },
   "statystyki": [
-    { "wartosc": "25+", "opis": "lat doświadczenia" },
+    { "wartosc": "20+", "opis": "lat doświadczenia" },
     { "wartosc": "180", "opis": "zrealizowanych projektów" },
-    { "wartosc": "12", "opis": "nagród krajowych i międzynarodowych" },
+    { "wartosc": "80+", "opis": "wygranych przetargów publicznych" },
     { "wartosc": "8", "opis": "miast w Polsce" }
   ],
   "realizacje_skrot": {

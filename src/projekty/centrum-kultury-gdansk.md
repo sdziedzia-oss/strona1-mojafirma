@@ -1,7 +1,7 @@
 ---
 title: "Centrum Kultury Metropolitalnej w Gdańsku"
 kolejnosc: 2
-kategoria: "Centra kultury"
+kategoria: "Budynki użyteczności publicznej"
 rok: "2020"
 lokalizacja: "Gdańsk, Młode Miasto"
 opis_krotki: "Wielofunkcyjny obiekt kulturalny na terenie postoczniowym. 12 000 m² przestrzeni dla teatru, galerii i edukacji artystycznej."

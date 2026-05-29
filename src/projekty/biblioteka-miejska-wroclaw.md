@@ -1,7 +1,7 @@
 ---
 title: "Biblioteka Miejska we Wrocławiu"
 kolejnosc: 1
-kategoria: "Biblioteki"
+kategoria: "Budynki użyteczności publicznej"
 rok: "2022"
 lokalizacja: "Wrocław, ul. Świdnicka"
 opis_krotki: "Nowa siedziba biblioteki głównej dla 650 000 mieszkańców. 8 600 m² przestrzeni łączących tradycję miejsca z otwartością na przyszłość."

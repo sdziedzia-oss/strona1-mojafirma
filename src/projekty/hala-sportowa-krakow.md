@@ -1,7 +1,7 @@
 ---
 title: "Wielofunkcyjna Hala Sportowa w Krakowie"
 kolejnosc: 3
-kategoria: "Obiekty sportowe"
+kategoria: "Budynki użyteczności publicznej"
 rok: "2021"
 lokalizacja: "Kraków, Nowa Huta"
 opis_krotki: "Arena sportowa na 5 000 widzów. Elastyczna przestrzeń dla sportów halowych, koncertów i wydarzeń miejskich."

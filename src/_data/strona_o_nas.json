@@ -1,6 +1,6 @@
 {
   "meta_tytul": "O nas – Art Projekt",
-  "meta_opis": "Pracownia Art Projekt działa od 2004 roku w Białymstoku. Ponad 25 lat doświadczenia w projektowaniu obiektów użyteczności publicznej najwyższej klasy.",
+  "meta_opis": "Pracownia Art Projekt działa od 2004 roku w Białymstoku. Ponad 20 lat doświadczenia w projektowaniu domów, budynków wielorodzinnych i obiektów użyteczności publicznej.",
   "h1": "Architektura jako odpowiedzialność.",
   "podtytul": "Tworzymy budynki, które przetrwają próbę czasu – technicznie precyzyjne i estetycznie ponadczasowe.",
   "hero": {
@@ -9,7 +9,7 @@
   },
   "filozofia": {
     "naglowek": "Nasza filozofia",
-    "tresc": "Wierzymy, że architektura użyteczności publicznej jest jednym z najważniejszych aktów zbiorowej odpowiedzialności. Budynek biblioteki, centrum kultury czy hali sportowej nie jest wyłącznie funkcjonalnym obiektem – to zaproszenie do wspólnoty.\n\nNasza metoda projektowania opiera się na trzech zasadach: **uważnym słuchaniu** miejsca i jego historii, **technicznej rzetelności** w każdym szczególe oraz **długotrwałości** rozwiązań, które nie ulegają modom.\n\nProjektujemy tak, jakby każdy budynek miał przetrwać sto lat."
+    "tresc": "Wierzymy, że dobra architektura jest jednym z najważniejszych aktów zbiorowej odpowiedzialności. Każdy budynek – czy to dom, osiedle, czy obiekt publiczny – to zaproszenie do wspólnoty i odpowiedź na potrzeby jego użytkowników.\n\nNasza metoda projektowania opiera się na trzech zasadach: **uważnym słuchaniu** miejsca i jego historii, **technicznej rzetelności** w każdym szczególe oraz **długotrwałości** rozwiązań, które nie ulegają modom.\n\nProjektujemy tak, jakby każdy budynek miał przetrwać sto lat."
   },
   "wartosci": [
     {
@@ -33,25 +33,25 @@
     "naglowek": "Zespół",
     "czlonkowie": [
       {
-        "imie": "Anna Kowalska",
-        "rola": "Główny Architekt / Partner",
+        "imie": "Artur Dziedzia",
+        "rola": "Architekt Główny · Partner",
         "zdjecie": "",
-        "alt": "Anna Kowalska – główny architekt",
-        "bio": "Absolwentka Politechniki Warszawskiej i ETH Zürich. Specjalizuje się w obiektach kultury i bibliotekach."
+        "alt": "Artur Dziedzia – Architekt Główny Art Projekt",
+        "bio": "Absolwent Wydziału Architektury Politechniki Białostockiej. Architekt kubaturowy z dwudziestoletnim doświadczeniem. Ekspert w zakresie rozwiązań prawnych i konstrukcyjnych. Odpowiada za spójną wizję projektową biura."
       },
       {
-        "imie": "Marek Wiśniewski",
-        "rola": "Architekt Prowadzący / Partner",
+        "imie": "Edyta Kołodko-Dziedzia",
+        "rola": "Architektka Wnętrz · Partner",
         "zdjecie": "",
-        "alt": "Marek Wiśniewski – architekt prowadzący",
-        "bio": "Doktor nauk technicznych, wykładowca akademicki. Ekspert w zakresie akustyki i systemów konstrukcyjnych."
+        "alt": "Edyta Kołodko-Dziedzia – Architektka Wnętrz",
+        "bio": "Absolwentka Wydziału Architektury Politechniki Białostockiej. Architektka wnętrz z dwudziestoletnim doświadczeniem. Specjalizuje się w kompozycji przestrzeni oraz doradztwie technicznym."
       },
       {
-        "imie": "Joanna Nowak",
-        "rola": "Kierownik Projektów",
+        "imie": "Szymon Dziedzia",
+        "rola": "Architekt Kubaturowy",
         "zdjecie": "",
-        "alt": "Joanna Nowak – kierownik projektów",
-        "bio": "15 lat doświadczenia w koordynacji dużych projektów infrastrukturalnych i budowlanych."
+        "alt": "Szymon Dziedzia – Architekt Kubaturowy",
+        "bio": "Absolwent Wydziału Architektury Politechniki Białostockiej. Architekt kubaturowy z wieloletnim doświadczeniem. Specjalizuje się w kształtowaniu bryły i stylistyki budynków."
       }
     ]
   }

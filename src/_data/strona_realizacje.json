@@ -1,6 +1,6 @@
 {
   "meta_tytul": "Realizacje – Art Projekt",
-  "meta_opis": "Portfolio projektów architektonicznych: biblioteki, centra kultury, obiekty sportowe i edukacyjne. Realizacje z całej Polski.",
+  "meta_opis": "Portfolio projektów Art Projekt: domy jednorodzinne, budynki wielorodzinne, obiekty użyteczności publicznej, architektura industrialna i wnętrza.",
   "h1": "Zrealizowane.",
   "podtytul": "Każdy projekt to odpowiedź na konkretne miejsce, czas i społeczność.",
   "hero": {
@@ -9,10 +9,9 @@
   },
   "kategorie": [
     "Wszystkie",
-    "Biblioteki",
-    "Centra kultury",
-    "Obiekty sportowe",
-    "Obiekty edukacyjne",
-    "Przestrzenie publiczne"
+    "Domy",
+    "Budynki użyteczności publicznej",
+    "Architektura industrialna",
+    "Wnętrza"
   ]
 }
