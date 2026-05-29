@@ -326,14 +326,14 @@ h1,h2,h3,h4{line-height:.95;letter-spacing:-.025em}
 .hero-ready .h1-inner{transform:translateY(0);opacity:1}
 .hero-ready .hero-sub-inner{transform:translateY(0);opacity:1}
 .hero-ready .hero-cta-inner{transform:translateY(0);opacity:1}
-.h1-l1 .h1-inner{transition-delay:2.6s}
-.h1-l2 .h1-inner{transition-delay:2.85s}
-.hero-ready .hero-sub-inner{transition-delay:3.1s}
-.hero-ready .hero-cta-inner{transition-delay:3.2s}
+.h1-l1 .h1-inner{transition-delay:.75s}
+.h1-l2 .h1-inner{transition-delay:1s}
+.hero-ready .hero-sub-inner{transition-delay:1.25s}
+.hero-ready .hero-cta-inner{transition-delay:1.4s}
 .hero-ready .hero-logo-img,
-.hero-ready .hero-logo-text{transition-delay:2.4s}
-.hero-ready .hero-est{transition-delay:2.3s}
-.hero-ready .hero-coord{transition-delay:2.5s}
+.hero-ready .hero-logo-text{transition-delay:.3s}
+.hero-ready .hero-est{transition-delay:.2s}
+.hero-ready .hero-coord{transition-delay:.35s}
 
 /* Skip preloader (revisit) */
 .skip-preloader .h1-inner,
@@ -350,7 +350,7 @@ h1,h2,h3,h4{line-height:.95;letter-spacing:-.025em}
   display:flex;flex-direction:column;align-items:center;gap:.6rem;
   font-family:var(--mono);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;
   color:var(--muted);opacity:0;z-index:3;
-  animation:fadeIn .8s 3.8s forwards;
+  animation:fadeIn .8s 2s forwards;
 }
 .scroll-arrow{width:1px;height:2.5rem;background:var(--line2);position:relative;overflow:hidden}
 .scroll-arrow::after{
@@ -775,7 +775,22 @@ h1,h2,h3,h4{line-height:.95;letter-spacing:-.025em}
   .footer-top{grid-template-columns:1fr}
   .footer-brand{grid-column:auto}
   .form-row--2col{flex-direction:column}
-  .hero-h1{font-size:clamp(3.5rem,14vw,6rem)}
+  /* Hero mobile */
+  .hero-h1{font-size:clamp(3rem,13vw,5.5rem)}
+  .hero-text{padding-top:5rem;flex:none;margin-top:auto}
+  .hero-logo-area{display:none}              /* logo jest już w headerze */
+  .hero-bottom{
+    flex-direction:column;align-items:flex-start;
+    gap:1.25rem;padding-bottom:2.5rem;
+  }
+  .hero-bottom-right{
+    flex-direction:column;align-items:flex-start;
+    gap:1rem;width:100%;
+  }
+  .hero-cta-inner{flex-direction:column;gap:.75rem;width:100%}
+  .hero-cta-inner .btn{width:100%;justify-content:center}
+  .hero-sub{max-width:100%;font-size:.88rem}
+  .hero-scroll{display:none}                 /* scroll hint niepotrzebny na mobile */
 }
 @media(max-width:480px){
   .stats-row{grid-template-columns:1fr 1fr}
