@@ -28,6 +28,18 @@
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
     Permissions-Policy        = "camera=(), microphone=(), geolocation=(), payment=()"
 
+# Strony HTML: zawsze sprawdź serwer, nie podawaj z cache
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Strony bez rozszerzenia (np. /o-nas/, /kontakt/)
+[[headers]]
+  for = "/*/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
 # Cache długoterminowy dla statycznych zasobów (hash w nazwie)
 [[headers]]
   for = "/assets/*"
